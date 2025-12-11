@@ -23,7 +23,7 @@ namespace Library_Project
             using (SqlConnection conn = SqlCon.Connect())
             {
                conn.Open();
-                string queryForDatas = "Select Books.BookId,Books.BookName as Kitap ,\r\nAuthors.FirstName + ' ' + Authors.LastName as Yazar,\r\nBooks.PublisherName as Yayınevi,\r\nBooks.PageCount as [Sayfa Sayısı]\r\nfrom Books\r\ninner join BookAuthors\r\non Books.BookId = BookAuthors.BookId\r\ninner join Authors\r\non Authors.AuthorId=BookAuthors.AuthorId\r\nwhere (Books.BookName like @Words OR Books.PublisherName like @Words OR Authors.FirstName + ' ' + Authors.LastName like @Words)";
+                string queryForDatas = "SELECT Books.BookId,Books.BookName AS Kitap ,\r\nAuthors.FirstName + ' ' + Authors.LastName AS Yazar,\r\nBooks.PublisherName AS Yayınevi,\r\nBooks.PageCount AS [Sayfa Sayısı]\r\nFROM Books\r\ninner join BookAuthors\r\non Books.BookId = BookAuthors.BookId\r\ninner join Authors\r\non Authors.AuthorId=BookAuthors.AuthorId\r\nwhere (Books.BookName LIKE @Words OR Books.PublisherName LIKE @Words OR Authors.FirstName + ' ' + Authors.LastName LIKE @Words AND Books.Status = 1)";
 
                 using (SqlCommand cmd = new SqlCommand(queryForDatas,conn))
                 {
@@ -86,6 +86,13 @@ namespace Library_Project
                     }
                 }
             }
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            frmUpdateBooks updateBooks = new frmUpdateBooks(_selectedBookId);
+            updateBooks.ShowDialog();
+
         }
     }
 }

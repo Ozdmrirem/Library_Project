@@ -10,3 +10,4 @@ C:\Users\irem\source\repos\Library_Project\Library_Project\obj\Debug\Library_Pro
 C:\Users\irem\source\repos\Library_Project\Library_Project\obj\Debug\Library_Project.pdb
 C:\Users\irem\source\repos\Library_Project\Library_Project\obj\Debug\Library_Project.frmMain.resources
 C:\Users\irem\source\repos\Library_Project\Library_Project\obj\Debug\Library_Project.frmBooks.resources
+C:\Users\irem\source\repos\Library_Project\Library_Project\obj\Debug\Library_Project.frmUpdateBooks.resources
