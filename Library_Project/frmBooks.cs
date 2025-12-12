@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using Library_Project.Tools.FluentValidation.Books;
+using Library_Project.Objects.Books;
 
 namespace Library_Project
 {
@@ -22,10 +24,10 @@ namespace Library_Project
         {
             using (SqlConnection conn = SqlCon.Connect())
             {
-               conn.Open();
-                string queryForDatas = "SELECT Books.BookId,Books.BookName AS Kitap ,\r\nAuthors.FirstName + ' ' + Authors.LastName AS Yazar,\r\nBooks.PublisherName AS Yayınevi,\r\nBooks.PageCount AS [Sayfa Sayısı]\r\nFROM Books\r\ninner join BookAuthors\r\non Books.BookId = BookAuthors.BookId\r\ninner join Authors\r\non Authors.AuthorId=BookAuthors.AuthorId\r\nwhere (Books.BookName LIKE @Words OR Books.PublisherName LIKE @Words OR Authors.FirstName + ' ' + Authors.LastName LIKE @Words AND Books.Status = 1)";
+                conn.Open();
+                string queryForDatas = "SELECT Books.BookId,Books.BookName AS Kitap , Authors.AuthorId, Authors.FirstName + ' ' + Authors.LastName AS Yazar,Books.PublisherName AS Yayınevi,Books.PageCount AS [Sayfa Sayısı] FROM Books INNER JOIN BookAuthors ON Books.BookId = BookAuthors.BookId INNER JOIN Authors ON Authors.AuthorId=BookAuthors.AuthorId WHERE (Books.BookName LIKE @Words OR Books.PublisherName LIKE @Words OR Authors.FirstName + ' ' + Authors.LastName LIKE @Words AND Books.Status = 1)";
 
-                using (SqlCommand cmd = new SqlCommand(queryForDatas,conn))
+                using (SqlCommand cmd = new SqlCommand(queryForDatas, conn))
                 {
                     cmd.Parameters.AddWithValue("@Words", '%' + tbxSearchBook.Text + '%');
 
@@ -42,40 +44,42 @@ namespace Library_Project
         {
             BringAndSearchDatas();
 
-            tbxAuthorsName.Enabled = false;
-            tbxBooksName.Enabled = false;
-            tbxPublishersName.Enabled = false;
+            tbxUpdateAuthorsName.Enabled = false;
+            tbxUpdateBooksName.Enabled = false;
+            tbxUpdatePublishersName.Enabled = false;
         }
 
         private void tbxSearchBook_TextChanged(object sender, EventArgs e)
         {
-            if(tbxSearchBook.Text != string.Empty)
+            if (tbxSearchBook.Text != string.Empty)
             {
                 BringAndSearchDatas();
             }
         }
 
         int _selectedBookId;
+        int _selectedAuthorId;
         private void dgwBooks_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             _selectedBookId = Convert.ToInt32(dgwBooks.CurrentRow.Cells[0].Value);
-            tbxBooksName.Text = dgwBooks.CurrentRow.Cells[1].Value.ToString();
-            tbxAuthorsName.Text = dgwBooks.CurrentRow.Cells[2].Value.ToString();
-            tbxPublishersName.Text = dgwBooks.CurrentRow.Cells[3].Value.ToString();
+            tbxUpdateBooksName.Text = dgwBooks.CurrentRow.Cells[1].Value.ToString();
+            _selectedAuthorId = Convert.ToInt32(dgwBooks.CurrentRow.Cells[2].Value);
+            tbxUpdateAuthorsName.Text = dgwBooks.CurrentRow.Cells[3].Value.ToString();
+            tbxUpdatePublishersName.Text = dgwBooks.CurrentRow.Cells[4].Value.ToString();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            DialogResult res = MessageBox.Show("Bu veriyi silmek istediğinizden emin misiniz ?","Uyarı",MessageBoxButtons.YesNoCancel,MessageBoxIcon.Question);
+            DialogResult res = MessageBox.Show("Bu veriyi silmek istediğinizden emin misiniz ?", "Uyarı", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
 
-            if(res == DialogResult.Yes)
+            if (res == DialogResult.Yes)
             {
                 using (SqlConnection conn = SqlCon.Connect())
                 {
                     conn.Open();
 
                     string queryForDelete = "UPDATE Books SET Status = 0 WHERE BookId = @bookId";
-                    
+
                     using (SqlCommand cmd = new SqlCommand(queryForDelete, conn))
                     {
                         cmd.Parameters.AddWithValue("bookId", _selectedBookId);
@@ -87,11 +91,36 @@ namespace Library_Project
                 }
             }
         }
-
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            frmUpdateBooks updateBooks = new frmUpdateBooks(_selectedBookId);
+            frmUpdateBooks updateBooks = new frmUpdateBooks(_selectedBookId, _selectedAuthorId);
             updateBooks.ShowDialog();
+
+        }
+
+        private void btnInsertBook_Click(object sender, EventArgs e)
+        {
+            var validator = new BookInsertValidator();
+
+            var insertBookObject = new InsertBook
+            {
+                BookName = tbxBookName.Text,
+                PublisherName = tbxPublisher.Text
+            };
+
+            var result = validator.Validate(insertBookObject);
+
+            if (result.IsValid)
+            {
+                MessageBox.Show("Hata yok. Kayıt Başarılı.");
+            }
+            else 
+            {
+                foreach (var error in result.Errors)
+                {
+                    MessageBox.Show("Hata : " + error.ErrorMessage);
+                }
+            }
 
         }
     }

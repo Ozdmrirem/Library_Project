@@ -166,6 +166,7 @@
             this.btnUpdate.TabIndex = 15;
             this.btnUpdate.Text = "Kaydet";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnCancel
             // 
@@ -236,6 +237,7 @@
             this.Name = "frmUpdateBooks";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Kitap Güncelle";
+            this.Load += new System.EventHandler(this.frmUpdateBooks_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numPageCount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numStock)).EndInit();
             this.ResumeLayout(false);
