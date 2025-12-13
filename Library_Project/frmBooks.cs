@@ -40,9 +40,34 @@ namespace Library_Project
             }
         }
 
+        void ListAuthors()
+        {
+            using (SqlConnection conn = SqlCon.Connect())
+            {
+                conn.Open();
+
+                string queryForAuthor = "Select AuthorId, FirstName + ' ' + LastName AS FullName FROM Authors ";
+
+                using (SqlCommand cmd = new SqlCommand(queryForAuthor, conn))
+                {
+                    using (SqlDataReader dataReader = cmd.ExecuteReader())
+                    {
+                        DataTable dataTable = new DataTable();
+                        dataTable.Load(dataReader);
+
+                        cbxAuthorName.DataSource = dataTable;
+
+                        cbxAuthorName.DisplayMember = "FullName";
+                        cbxAuthorName.ValueMember = "AuthorId";
+                    }
+                }
+            }
+        }
+
         private void frmBooks_Load(object sender, EventArgs e)
         {
             BringAndSearchDatas();
+            ListAuthors();
 
             tbxUpdateAuthorsName.Enabled = false;
             tbxUpdateBooksName.Enabled = false;
@@ -112,7 +137,7 @@ namespace Library_Project
 
             if (result.IsValid)
             {
-                MessageBox.Show("Hata yok. Kayıt Başarılı.");
+                InsertNewBook();
             }
             else 
             {
@@ -121,7 +146,49 @@ namespace Library_Project
                     MessageBox.Show("Hata : " + error.ErrorMessage);
                 }
             }
+        }
+        private void InsertNewBook()
+        {
+            using (SqlConnection conn= SqlCon.Connect())
+            {
+                conn.Open();
 
+                SqlTransaction transaction = conn.BeginTransaction();
+
+                try
+                {
+                    string queryForNewBook = "INSERT INTO Books (BookName,PublisherName,ReleasedDate,PageCount,QuantityInStocks,CreatedBy) VALUES (@bookName,@publisherName,@releasedDate,@pageCount,@quantityInStocks,@createdBy); SELECT SCOPE_IDENTITY();";
+
+                    using (SqlCommand cmd = new SqlCommand(queryForNewBook,conn,transaction))
+                    {
+                        cmd.Parameters.AddWithValue("@bookName", tbxBookName.Text);
+                        cmd.Parameters.AddWithValue("@publisherName", tbxPublisher.Text);
+                        cmd.Parameters.AddWithValue("@releasedDate", dtpReleasedDate.Value);
+                        cmd.Parameters.AddWithValue("@pageCount", Convert.ToInt32(numPageCount.Value));
+                        cmd.Parameters.AddWithValue("@quantityInStocks", Convert.ToInt32(numStock.Value));
+                        cmd.Parameters.AddWithValue("@createdBy", Session.ActiveUserId);
+
+                        int insertedBookId = Convert.ToInt32(cmd.ExecuteScalar());
+
+                        string queryForAuthor = "INSERT INTO BookAuthors (BookId,AuthorId) VALUES (@bookId,@authorId)";
+
+                        using (SqlCommand cmdAuthor = new SqlCommand(queryForAuthor, conn,transaction))
+                        {
+                            cmdAuthor.Parameters.AddWithValue("@bookId", insertedBookId);
+                            cmdAuthor.Parameters.AddWithValue("@authorId", cbxAuthorName.SelectedValue);
+
+                            cmdAuthor.ExecuteNonQuery();
+                        }
+                    }
+
+                    transaction.Commit();
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    MessageBox.Show(ex.Message);
+                }
+            }
         }
     }
 }
