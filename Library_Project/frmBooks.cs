@@ -178,6 +178,8 @@ namespace Library_Project
                             cmdAuthor.Parameters.AddWithValue("@authorId", cbxAuthorName.SelectedValue);
 
                             cmdAuthor.ExecuteNonQuery();
+
+                            MessageBox.Show("Veri ekleme işlemi başarılı.", "Veri Ekleme", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
 
