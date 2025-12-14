@@ -14,3 +14,4 @@ C:\Users\irem\source\repos\Library_Project\Library_Project\bin\Debug\Library_Pro
 C:\Users\irem\source\repos\Library_Project\Library_Project\bin\Debug\FluentValidation.dll
 C:\Users\irem\source\repos\Library_Project\Library_Project\bin\Debug\FluentValidation.xml
 C:\Users\irem\source\repos\Library_Project\Library_Project\obj\Debug\Library_.34B0EAA6.Up2Date
+C:\Users\irem\source\repos\Library_Project\Library_Project\obj\Debug\Library_Project.frmMembers.resources

@@ -20,41 +20,71 @@ namespace Library_Project
 
         private void btnInsert_Click(object sender, EventArgs e)
         {
+
             using (SqlConnection conn = SqlCon.Connect())
             {
+                conn.Open();
+
                 SqlTransaction transaction = conn.BeginTransaction();
 
-                string queryForUser = "INSERT INTO AppUsers (FirstName,LastName,IdentityNumber,Username,Password,BirthDate,Gender) VALUES (@firstName, @lastName,@identityNumber,@username,@password,@birthDate,@gender); SELECT SCOPE_IDENTITY();";
-
-                using (SqlCommand cmdForUser = new SqlCommand(queryForUser,conn,transaction))
+                try
                 {
-                    cmdForUser.Parameters.AddWithValue("@firstName", tbxFirstName.Text);
-                    cmdForUser.Parameters.AddWithValue("@lastName", tbxLastName.Text);
-                    cmdForUser.Parameters.AddWithValue("@identityNumber", tbxIdentityNumber.Text);
-                    cmdForUser.Parameters.AddWithValue("@username",null);
-                    cmdForUser.Parameters.AddWithValue("@password",null);
-                    cmdForUser.Parameters.AddWithValue("@birthDate", dtpBirthDate.Value);
+                    string queryForUser = "INSERT INTO AppUsers (FirstName,LastName,IdentityNumber,Username,Password,BirthDate,Gender) VALUES (@firstName, @lastName,@identityNumber,@username,@password,@birthDate,@gender); SELECT SCOPE_IDENTITY();";
 
-                    bool gender;
-                    gender =rbMan.Checked ? true : false;
-
-                    cmdForUser.Parameters.AddWithValue("@gender", gender);
-
-                    int insertedUserId = Convert.ToInt32(cmdForUser.ExecuteScalar());
-
-                    if(chkMember.Checked)
+                    using (SqlCommand cmdForUser = new SqlCommand(queryForUser, conn, transaction))
                     {
+                        cmdForUser.Parameters.AddWithValue("@firstName", tbxFirstName.Text);
+                        cmdForUser.Parameters.AddWithValue("@lastName", tbxLastName.Text);
+                        cmdForUser.Parameters.AddWithValue("@identityNumber", tbxIdentityNumber.Text);
+                        cmdForUser.Parameters.AddWithValue("@username", "deneme");
+                        cmdForUser.Parameters.AddWithValue("@password", "deneme");
+                        cmdForUser.Parameters.AddWithValue("@birthDate", dtpBirthDate.Value);
 
-                    }
-                    if(chkAdmin.Checked)
-                    {
+                        bool gender;
+                        gender = rbMan.Checked ? true : false;
 
-                    }
-                    if (chkSuperAdmin.Checked)
-                    {
-                        
+                        cmdForUser.Parameters.AddWithValue("@gender", gender);
+
+                        int insertedUserId = Convert.ToInt32(cmdForUser.ExecuteScalar());
+
+                        if (chkMember.Checked)
+                        {
+                            AssignRoleToUser(conn, transaction, insertedUserId, 3);
+                        }
+                        if (chkAdmin.Checked)
+                        {
+                            AssignRoleToUser(conn, transaction, insertedUserId, 2);
+                        }
+                        if (chkSuperAdmin.Checked)
+                        {
+                            AssignRoleToUser(conn, transaction, insertedUserId, 1);
+                        }
+
+                        transaction.Commit();
+
+                        MessageBox.Show("Veriler eklendi.");
                     }
                 }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    MessageBox.Show("Hata" + ex.Message);
+                }
+            }
+        }
+        
+
+        private void AssignRoleToUser(SqlConnection conn, SqlTransaction transaction, int insertedUserId, int roleId)
+        {
+            string queryForRole = "INSERT INTO UserRoles (RoleId, UserId) VALUES (@roleId, @userId);";
+
+            using (SqlCommand cmdForRole = new SqlCommand(queryForRole, conn, transaction))
+            {
+                cmdForRole.Parameters.AddWithValue("@roleId", roleId);
+                cmdForRole.Parameters.AddWithValue("@userId", insertedUserId);
+
+                cmdForRole.ExecuteNonQuery();
+
             }
         }
     }

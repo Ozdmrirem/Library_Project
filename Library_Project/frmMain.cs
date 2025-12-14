@@ -31,5 +31,12 @@ namespace Library_Project
             books.Show();
             this.Hide();
         }
+
+        private void btnMembers_Click(object sender, EventArgs e)
+        {
+            frmMembers members = new frmMembers();
+            members.Show();
+            this.Hide();
+        }
     }
 }

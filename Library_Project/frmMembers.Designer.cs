@@ -28,7 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gbxInsertMember = new System.Windows.Forms.GroupBox();
+            this.tbxLastName = new System.Windows.Forms.TextBox();
+            this.btnInsert = new System.Windows.Forms.Button();
+            this.chkSuperAdmin = new System.Windows.Forms.CheckBox();
+            this.chkAdmin = new System.Windows.Forms.CheckBox();
+            this.chkMember = new System.Windows.Forms.CheckBox();
+            this.rbMan = new System.Windows.Forms.RadioButton();
+            this.rbWoman = new System.Windows.Forms.RadioButton();
             this.dtpBirthDate = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.tbxIdentityNumber = new System.Windows.Forms.TextBox();
@@ -36,38 +43,104 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tbxFirstName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.rbMan = new System.Windows.Forms.RadioButton();
-            this.rbWoman = new System.Windows.Forms.RadioButton();
-            this.chkMember = new System.Windows.Forms.CheckBox();
-            this.chkAdmin = new System.Windows.Forms.CheckBox();
-            this.chkSuperAdmin = new System.Windows.Forms.CheckBox();
-            this.btnInsert = new System.Windows.Forms.Button();
-            this.tbxLastName = new System.Windows.Forms.TextBox();
-            this.groupBox1.SuspendLayout();
+            this.gbxInsertMember.SuspendLayout();
             this.SuspendLayout();
             // 
-            // groupBox1
+            // gbxInsertMember
             // 
-            this.groupBox1.Controls.Add(this.tbxLastName);
-            this.groupBox1.Controls.Add(this.btnInsert);
-            this.groupBox1.Controls.Add(this.chkSuperAdmin);
-            this.groupBox1.Controls.Add(this.chkAdmin);
-            this.groupBox1.Controls.Add(this.chkMember);
-            this.groupBox1.Controls.Add(this.rbMan);
-            this.groupBox1.Controls.Add(this.rbWoman);
-            this.groupBox1.Controls.Add(this.dtpBirthDate);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.tbxIdentityNumber);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.tbxFirstName);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(336, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(452, 426);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Üye Ekle";
+            this.gbxInsertMember.Controls.Add(this.tbxLastName);
+            this.gbxInsertMember.Controls.Add(this.btnInsert);
+            this.gbxInsertMember.Controls.Add(this.chkSuperAdmin);
+            this.gbxInsertMember.Controls.Add(this.chkAdmin);
+            this.gbxInsertMember.Controls.Add(this.chkMember);
+            this.gbxInsertMember.Controls.Add(this.rbMan);
+            this.gbxInsertMember.Controls.Add(this.rbWoman);
+            this.gbxInsertMember.Controls.Add(this.dtpBirthDate);
+            this.gbxInsertMember.Controls.Add(this.label6);
+            this.gbxInsertMember.Controls.Add(this.tbxIdentityNumber);
+            this.gbxInsertMember.Controls.Add(this.label3);
+            this.gbxInsertMember.Controls.Add(this.label2);
+            this.gbxInsertMember.Controls.Add(this.tbxFirstName);
+            this.gbxInsertMember.Controls.Add(this.label1);
+            this.gbxInsertMember.Location = new System.Drawing.Point(304, 12);
+            this.gbxInsertMember.Name = "gbxInsertMember";
+            this.gbxInsertMember.Size = new System.Drawing.Size(452, 426);
+            this.gbxInsertMember.TabIndex = 0;
+            this.gbxInsertMember.TabStop = false;
+            this.gbxInsertMember.Text = "Üye Ekle";
+            // 
+            // tbxLastName
+            // 
+            this.tbxLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.tbxLastName.Location = new System.Drawing.Point(161, 71);
+            this.tbxLastName.Name = "tbxLastName";
+            this.tbxLastName.Size = new System.Drawing.Size(260, 27);
+            this.tbxLastName.TabIndex = 32;
+            // 
+            // btnInsert
+            // 
+            this.btnInsert.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnInsert.Location = new System.Drawing.Point(314, 356);
+            this.btnInsert.Name = "btnInsert";
+            this.btnInsert.Size = new System.Drawing.Size(107, 33);
+            this.btnInsert.TabIndex = 31;
+            this.btnInsert.Text = "Kaydet";
+            this.btnInsert.UseVisualStyleBackColor = true;
+            this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
+            // 
+            // chkSuperAdmin
+            // 
+            this.chkSuperAdmin.AutoSize = true;
+            this.chkSuperAdmin.Location = new System.Drawing.Point(161, 314);
+            this.chkSuperAdmin.Name = "chkSuperAdmin";
+            this.chkSuperAdmin.Size = new System.Drawing.Size(77, 20);
+            this.chkSuperAdmin.TabIndex = 30;
+            this.chkSuperAdmin.Text = "Yönetici";
+            this.chkSuperAdmin.UseVisualStyleBackColor = true;
+            // 
+            // chkAdmin
+            // 
+            this.chkAdmin.AutoSize = true;
+            this.chkAdmin.Location = new System.Drawing.Point(161, 288);
+            this.chkAdmin.Name = "chkAdmin";
+            this.chkAdmin.Size = new System.Drawing.Size(91, 20);
+            this.chkAdmin.TabIndex = 29;
+            this.chkAdmin.Text = "Moderatör";
+            this.chkAdmin.UseVisualStyleBackColor = true;
+            // 
+            // chkMember
+            // 
+            this.chkMember.AutoSize = true;
+            this.chkMember.Location = new System.Drawing.Point(161, 262);
+            this.chkMember.Name = "chkMember";
+            this.chkMember.Size = new System.Drawing.Size(101, 20);
+            this.chkMember.TabIndex = 28;
+            this.chkMember.Text = "Normal Üye";
+            this.chkMember.UseVisualStyleBackColor = true;
+            // 
+            // rbMan
+            // 
+            this.rbMan.AutoSize = true;
+            this.rbMan.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.rbMan.Location = new System.Drawing.Point(316, 199);
+            this.rbMan.Name = "rbMan";
+            this.rbMan.Size = new System.Drawing.Size(72, 24);
+            this.rbMan.TabIndex = 27;
+            this.rbMan.TabStop = true;
+            this.rbMan.Text = "Erkek";
+            this.rbMan.UseVisualStyleBackColor = true;
+            // 
+            // rbWoman
+            // 
+            this.rbWoman.AutoSize = true;
+            this.rbWoman.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.rbWoman.Location = new System.Drawing.Point(164, 199);
+            this.rbWoman.Name = "rbWoman";
+            this.rbWoman.Size = new System.Drawing.Size(72, 24);
+            this.rbWoman.TabIndex = 26;
+            this.rbWoman.TabStop = true;
+            this.rbWoman.Text = "Kadın";
+            this.rbWoman.UseVisualStyleBackColor = true;
             // 
             // dtpBirthDate
             // 
@@ -133,96 +206,23 @@
             this.label1.TabIndex = 18;
             this.label1.Text = "Ad :";
             // 
-            // rbMan
-            // 
-            this.rbMan.AutoSize = true;
-            this.rbMan.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.rbMan.Location = new System.Drawing.Point(316, 199);
-            this.rbMan.Name = "rbMan";
-            this.rbMan.Size = new System.Drawing.Size(72, 24);
-            this.rbMan.TabIndex = 27;
-            this.rbMan.TabStop = true;
-            this.rbMan.Text = "Erkek";
-            this.rbMan.UseVisualStyleBackColor = true;
-            // 
-            // rbWoman
-            // 
-            this.rbWoman.AutoSize = true;
-            this.rbWoman.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.rbWoman.Location = new System.Drawing.Point(164, 199);
-            this.rbWoman.Name = "rbWoman";
-            this.rbWoman.Size = new System.Drawing.Size(72, 24);
-            this.rbWoman.TabIndex = 26;
-            this.rbWoman.TabStop = true;
-            this.rbWoman.Text = "Kadın";
-            this.rbWoman.UseVisualStyleBackColor = true;
-            // 
-            // chkMember
-            // 
-            this.chkMember.AutoSize = true;
-            this.chkMember.Location = new System.Drawing.Point(161, 262);
-            this.chkMember.Name = "chkMember";
-            this.chkMember.Size = new System.Drawing.Size(101, 20);
-            this.chkMember.TabIndex = 28;
-            this.chkMember.Text = "Normal Üye";
-            this.chkMember.UseVisualStyleBackColor = true;
-            // 
-            // chkAdmin
-            // 
-            this.chkAdmin.AutoSize = true;
-            this.chkAdmin.Location = new System.Drawing.Point(161, 288);
-            this.chkAdmin.Name = "chkAdmin";
-            this.chkAdmin.Size = new System.Drawing.Size(91, 20);
-            this.chkAdmin.TabIndex = 29;
-            this.chkAdmin.Text = "Moderatör";
-            this.chkAdmin.UseVisualStyleBackColor = true;
-            // 
-            // chkSuperAdmin
-            // 
-            this.chkSuperAdmin.AutoSize = true;
-            this.chkSuperAdmin.Location = new System.Drawing.Point(161, 314);
-            this.chkSuperAdmin.Name = "chkSuperAdmin";
-            this.chkSuperAdmin.Size = new System.Drawing.Size(77, 20);
-            this.chkSuperAdmin.TabIndex = 30;
-            this.chkSuperAdmin.Text = "Yönetici";
-            this.chkSuperAdmin.UseVisualStyleBackColor = true;
-            // 
-            // btnInsert
-            // 
-            this.btnInsert.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnInsert.Location = new System.Drawing.Point(314, 356);
-            this.btnInsert.Name = "btnInsert";
-            this.btnInsert.Size = new System.Drawing.Size(107, 33);
-            this.btnInsert.TabIndex = 31;
-            this.btnInsert.Text = "Kaydet";
-            this.btnInsert.UseVisualStyleBackColor = true;
-            this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
-            // 
-            // tbxLastName
-            // 
-            this.tbxLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.tbxLastName.Location = new System.Drawing.Point(161, 71);
-            this.tbxLastName.Name = "tbxLastName";
-            this.tbxLastName.Size = new System.Drawing.Size(260, 27);
-            this.tbxLastName.TabIndex = 32;
-            // 
             // frmMembers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.groupBox1);
+            this.ClientSize = new System.Drawing.Size(780, 450);
+            this.Controls.Add(this.gbxInsertMember);
             this.Name = "frmMembers";
             this.Text = "frmMembers";
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.gbxInsertMember.ResumeLayout(false);
+            this.gbxInsertMember.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox gbxInsertMember;
         private System.Windows.Forms.DateTimePicker dtpBirthDate;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox tbxIdentityNumber;
