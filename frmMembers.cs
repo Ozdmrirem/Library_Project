@@ -103,10 +103,10 @@ namespace Library_Project
         private void frmMembers_Load(object sender, EventArgs e)
         {
             ChangePassive();
-            BringMemberDatas();
+            BringAndSearchMemberDatas();
         }
 
-        private void BringMemberDatas()
+        private void BringAndSearchMemberDatas()
         {
             using (SqlConnection conn = SqlCon.Connect())
             {
@@ -159,6 +159,14 @@ namespace Library_Project
             else
             {
                 ChangePassive();
+            }
+        }
+
+        private void tbxMember_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(tbxMember.Text))
+            {
+                BringAndSearchMemberDatas();
             }
         }
     }

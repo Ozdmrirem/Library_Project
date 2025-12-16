@@ -273,6 +273,7 @@
             this.tbxMember.Name = "tbxMember";
             this.tbxMember.Size = new System.Drawing.Size(100, 22);
             this.tbxMember.TabIndex = 37;
+            this.tbxMember.TextChanged += new System.EventHandler(this.tbxMember_TextChanged);
             // 
             // frmMembers
             // 
