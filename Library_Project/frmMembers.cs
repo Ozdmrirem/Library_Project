@@ -36,8 +36,13 @@ namespace Library_Project
                         cmdForUser.Parameters.AddWithValue("@firstName", tbxFirstName.Text);
                         cmdForUser.Parameters.AddWithValue("@lastName", tbxLastName.Text);
                         cmdForUser.Parameters.AddWithValue("@identityNumber", tbxIdentityNumber.Text);
-                        cmdForUser.Parameters.AddWithValue("@username", "deneme");
-                        cmdForUser.Parameters.AddWithValue("@password", "deneme");
+
+                        string username = tbxUserName.Text;
+                        string password = tbxPassword.Text;
+
+
+                        cmdForUser.Parameters.AddWithValue("@username", tbxUserName.Text);
+                        cmdForUser.Parameters.AddWithValue("@password", tbxPassword.Text);
                         cmdForUser.Parameters.AddWithValue("@birthDate", dtpBirthDate.Value);
 
                         bool gender;
@@ -57,10 +62,17 @@ namespace Library_Project
                         }
                         if (chkSuperAdmin.Checked)
                         {
-                            AssignRoleToUser(conn, transaction, insertedUserId, 1);
+                            if (Session.ActiveRoleId != 1)
+                            {
+                                MessageBox.Show("Yetkiniz yönetici eklemek için yetersiz! Diğer yetkiler eklendi.");
+                            }
+                            else
+                            {
+                                AssignRoleToUser(conn, transaction, insertedUserId, 1);
+                            }
                         }
 
-                        transaction.Commit();
+                        transaction.Commit(); 
 
                         MessageBox.Show("Veriler eklendi.");
                     }
@@ -87,5 +99,46 @@ namespace Library_Project
 
             }
         }
+
+        private void frmMembers_Load(object sender, EventArgs e)
+        {
+            ChangePassive();
+        }
+
+        void ChangePassive()
+        {
+            tbxUserName.Enabled = false;
+            tbxPassword.Enabled = false;
+        }
+
+        private void chkAdmin_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkAdmin.Checked)
+            {
+                tbxUserName.Enabled = true;
+                tbxPassword.Enabled = true;
+            }
+            else
+            {
+                ChangePassive();
+            }
+        }
+
+        private void chkSuperAdmin_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkSuperAdmin.Checked)
+            {
+                tbxUserName.Enabled = true;
+                tbxPassword.Enabled = true;
+            }
+            else
+            {
+                ChangePassive();
+            }
+        }
     }
+
+
+
+    
 }
