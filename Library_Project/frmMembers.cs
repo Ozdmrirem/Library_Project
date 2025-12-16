@@ -103,6 +103,31 @@ namespace Library_Project
         private void frmMembers_Load(object sender, EventArgs e)
         {
             ChangePassive();
+            BringMemberDatas();
+        }
+
+        private void BringMemberDatas()
+        {
+            using (SqlConnection conn = SqlCon.Connect())
+            {
+
+                string query = "SELECT au.FirstName,au.LastName, STRING_AGG(ar.RoleName, ' , ') as Roles ,au.IdentityNumber,au.BirthDate,au.CreatedDate FROM AppUsers au INNER JOIN UserRoles ur ON ur.UserId = au.UserId INNER JOIN AppRoles ar ON ar.RoleId = ur.RoleId GROUP BY  au.FirstName,au.LastName,au.IdentityNumber,au.BirthDate,au.CreatedDate HAVING (au.FirstName + ' ' + au.LastName LIKE @memberName) OR (au.IdentityNumber LIKE @identityNumber) ";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@memberName", tbxMember.Text);
+                    cmd.Parameters.AddWithValue("@identityNumber", tbxMember.Text);
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
+                        DataSet dataSet = new DataSet();
+                        dataAdapter.Fill(dataSet);
+
+                        dgwMembers.DataSource = dataSet.Tables[0];
+                    }
+                }
+            }
         }
 
         void ChangePassive()

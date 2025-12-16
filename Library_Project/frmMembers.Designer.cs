@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.gbxInsertMember = new System.Windows.Forms.GroupBox();
+            this.tbxPassword = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.tbxUserName = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.tbxLastName = new System.Windows.Forms.TextBox();
             this.btnInsert = new System.Windows.Forms.Button();
             this.chkSuperAdmin = new System.Windows.Forms.CheckBox();
@@ -43,17 +47,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tbxFirstName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.tbxPassword = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.tbxUserName = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgwMembers = new System.Windows.Forms.DataGridView();
+            this.tbxMember = new System.Windows.Forms.TextBox();
             this.gbxInsertMember.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgwMembers)).BeginInit();
             this.SuspendLayout();
             // 
             // gbxInsertMember
             // 
+            this.gbxInsertMember.Controls.Add(this.tbxMember);
             this.gbxInsertMember.Controls.Add(this.tbxPassword);
             this.gbxInsertMember.Controls.Add(this.label4);
             this.gbxInsertMember.Controls.Add(this.tbxUserName);
@@ -78,6 +80,42 @@
             this.gbxInsertMember.TabIndex = 0;
             this.gbxInsertMember.TabStop = false;
             this.gbxInsertMember.Text = "Üye Ekle";
+            // 
+            // tbxPassword
+            // 
+            this.tbxPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.tbxPassword.Location = new System.Drawing.Point(402, 226);
+            this.tbxPassword.Name = "tbxPassword";
+            this.tbxPassword.Size = new System.Drawing.Size(260, 24);
+            this.tbxPassword.TabIndex = 36;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label4.Location = new System.Drawing.Point(333, 229);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(46, 18);
+            this.label4.TabIndex = 35;
+            this.label4.Text = "Şifre :";
+            // 
+            // tbxUserName
+            // 
+            this.tbxUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.tbxUserName.Location = new System.Drawing.Point(402, 190);
+            this.tbxUserName.Name = "tbxUserName";
+            this.tbxUserName.Size = new System.Drawing.Size(260, 24);
+            this.tbxUserName.TabIndex = 34;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label5.Location = new System.Drawing.Point(285, 193);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(94, 18);
+            this.label5.TabIndex = 33;
+            this.label5.Text = "Kullanıcı Adı :";
             // 
             // tbxLastName
             // 
@@ -218,66 +256,37 @@
             this.label1.TabIndex = 18;
             this.label1.Text = "Ad :";
             // 
-            // tbxPassword
+            // dgwMembers
             // 
-            this.tbxPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.tbxPassword.Location = new System.Drawing.Point(402, 226);
-            this.tbxPassword.Name = "tbxPassword";
-            this.tbxPassword.Size = new System.Drawing.Size(260, 24);
-            this.tbxPassword.TabIndex = 36;
+            this.dgwMembers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgwMembers.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dgwMembers.Location = new System.Drawing.Point(0, 280);
+            this.dgwMembers.Name = "dgwMembers";
+            this.dgwMembers.RowHeadersWidth = 51;
+            this.dgwMembers.RowTemplate.Height = 24;
+            this.dgwMembers.Size = new System.Drawing.Size(877, 230);
+            this.dgwMembers.TabIndex = 1;
             // 
-            // label4
+            // tbxMember
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label4.Location = new System.Drawing.Point(333, 229);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(46, 18);
-            this.label4.TabIndex = 35;
-            this.label4.Text = "Şifre :";
-            // 
-            // tbxUserName
-            // 
-            this.tbxUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.tbxUserName.Location = new System.Drawing.Point(402, 190);
-            this.tbxUserName.Name = "tbxUserName";
-            this.tbxUserName.Size = new System.Drawing.Size(260, 24);
-            this.tbxUserName.TabIndex = 34;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label5.Location = new System.Drawing.Point(285, 193);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(94, 18);
-            this.label5.TabIndex = 33;
-            this.label5.Text = "Kullanıcı Adı :";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 280);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(877, 230);
-            this.dataGridView1.TabIndex = 1;
+            this.tbxMember.Location = new System.Drawing.Point(89, 163);
+            this.tbxMember.Name = "tbxMember";
+            this.tbxMember.Size = new System.Drawing.Size(100, 22);
+            this.tbxMember.TabIndex = 37;
             // 
             // frmMembers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(877, 510);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgwMembers);
             this.Controls.Add(this.gbxInsertMember);
             this.Name = "frmMembers";
             this.Text = "frmMembers";
             this.Load += new System.EventHandler(this.frmMembers_Load);
             this.gbxInsertMember.ResumeLayout(false);
             this.gbxInsertMember.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgwMembers)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -303,6 +312,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox tbxUserName;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgwMembers;
+        private System.Windows.Forms.TextBox tbxMember;
     }
 }
