@@ -169,9 +169,16 @@ namespace Library_Project
                 BringAndSearchMemberDatas();
             }
         }
-    }
 
+        int _selectedUserId;
+        private void dgwMembers_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            _selectedUserId = Convert.ToInt32(dgwMembers.CurrentRow.Cells[0].Value);
+            tbxUpdateName.Text = dgwMembers.CurrentRow.Cells[1].Value.ToString();
+            tbxUpdateLastName.Text = dgwMembers.CurrentRow.Cells[2].Value.ToString(); 
+            tbxUpdateIdentity.Text = dgwMembers.CurrentRow.Cells[3].Value.ToString();
+            tbxUpdateRoles.Text = dgwMembers.CurrentRow.Cells[4].Value.ToString();
 
-
-    
+        }
+    }    
 }
