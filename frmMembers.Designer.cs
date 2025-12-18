@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.gbxInsertMember = new System.Windows.Forms.GroupBox();
-            this.tbxMember = new System.Windows.Forms.TextBox();
             this.tbxPassword = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.tbxUserName = new System.Windows.Forms.TextBox();
@@ -48,6 +47,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tbxFirstName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.tbxMember = new System.Windows.Forms.TextBox();
             this.dgwMembers = new System.Windows.Forms.DataGridView();
             this.tbxUpdateLastName = new System.Windows.Forms.TextBox();
             this.tbxUpdateIdentity = new System.Windows.Forms.TextBox();
@@ -59,8 +59,10 @@
             this.label10 = new System.Windows.Forms.Label();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.gbxInsertMember.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgwMembers)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbxInsertMember
@@ -89,14 +91,6 @@
             this.gbxInsertMember.TabIndex = 0;
             this.gbxInsertMember.TabStop = false;
             this.gbxInsertMember.Text = "Üye Ekle";
-            // 
-            // tbxMember
-            // 
-            this.tbxMember.Location = new System.Drawing.Point(316, 252);
-            this.tbxMember.Name = "tbxMember";
-            this.tbxMember.Size = new System.Drawing.Size(100, 22);
-            this.tbxMember.TabIndex = 37;
-            this.tbxMember.TextChanged += new System.EventHandler(this.tbxMember_TextChanged);
             // 
             // tbxPassword
             // 
@@ -273,21 +267,29 @@
             this.label1.TabIndex = 18;
             this.label1.Text = "Ad :";
             // 
+            // tbxMember
+            // 
+            this.tbxMember.Location = new System.Drawing.Point(295, 225);
+            this.tbxMember.Name = "tbxMember";
+            this.tbxMember.Size = new System.Drawing.Size(100, 22);
+            this.tbxMember.TabIndex = 37;
+            this.tbxMember.TextChanged += new System.EventHandler(this.tbxMember_TextChanged);
+            // 
             // dgwMembers
             // 
             this.dgwMembers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgwMembers.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgwMembers.Location = new System.Drawing.Point(0, 280);
+            this.dgwMembers.Location = new System.Drawing.Point(0, 500);
             this.dgwMembers.Name = "dgwMembers";
             this.dgwMembers.RowHeadersWidth = 51;
             this.dgwMembers.RowTemplate.Height = 24;
-            this.dgwMembers.Size = new System.Drawing.Size(992, 230);
+            this.dgwMembers.Size = new System.Drawing.Size(992, 10);
             this.dgwMembers.TabIndex = 1;
             // 
             // tbxUpdateLastName
             // 
             this.tbxUpdateLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.tbxUpdateLastName.Location = new System.Drawing.Point(106, 54);
+            this.tbxUpdateLastName.Location = new System.Drawing.Point(135, 44);
             this.tbxUpdateLastName.Name = "tbxUpdateLastName";
             this.tbxUpdateLastName.Size = new System.Drawing.Size(260, 24);
             this.tbxUpdateLastName.TabIndex = 43;
@@ -295,7 +297,7 @@
             // tbxUpdateIdentity
             // 
             this.tbxUpdateIdentity.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.tbxUpdateIdentity.Location = new System.Drawing.Point(106, 89);
+            this.tbxUpdateIdentity.Location = new System.Drawing.Point(135, 79);
             this.tbxUpdateIdentity.Name = "tbxUpdateIdentity";
             this.tbxUpdateIdentity.Size = new System.Drawing.Size(260, 24);
             this.tbxUpdateIdentity.TabIndex = 42;
@@ -304,7 +306,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label7.Location = new System.Drawing.Point(23, 92);
+            this.label7.Location = new System.Drawing.Point(52, 82);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(60, 18);
             this.label7.TabIndex = 41;
@@ -314,7 +316,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label8.Location = new System.Drawing.Point(25, 57);
+            this.label8.Location = new System.Drawing.Point(54, 47);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(58, 18);
             this.label8.TabIndex = 40;
@@ -323,7 +325,7 @@
             // tbxUpdateName
             // 
             this.tbxUpdateName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.tbxUpdateName.Location = new System.Drawing.Point(106, 22);
+            this.tbxUpdateName.Location = new System.Drawing.Point(135, 12);
             this.tbxUpdateName.Name = "tbxUpdateName";
             this.tbxUpdateName.Size = new System.Drawing.Size(260, 24);
             this.tbxUpdateName.TabIndex = 39;
@@ -332,7 +334,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label9.Location = new System.Drawing.Point(50, 25);
+            this.label9.Location = new System.Drawing.Point(79, 15);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(33, 18);
             this.label9.TabIndex = 38;
@@ -341,7 +343,7 @@
             // tbxUpdateRoles
             // 
             this.tbxUpdateRoles.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.tbxUpdateRoles.Location = new System.Drawing.Point(106, 125);
+            this.tbxUpdateRoles.Location = new System.Drawing.Point(135, 115);
             this.tbxUpdateRoles.Name = "tbxUpdateRoles";
             this.tbxUpdateRoles.Size = new System.Drawing.Size(260, 24);
             this.tbxUpdateRoles.TabIndex = 45;
@@ -350,7 +352,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label10.Location = new System.Drawing.Point(23, 128);
+            this.label10.Location = new System.Drawing.Point(52, 118);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(55, 18);
             this.label10.TabIndex = 44;
@@ -359,7 +361,7 @@
             // btnUpdate
             // 
             this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnUpdate.Location = new System.Drawing.Point(106, 170);
+            this.btnUpdate.Location = new System.Drawing.Point(135, 160);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(123, 30);
             this.btnUpdate.TabIndex = 46;
@@ -370,29 +372,39 @@
             // 
             this.btnDelete.BackColor = System.Drawing.Color.Red;
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnDelete.Location = new System.Drawing.Point(243, 170);
+            this.btnDelete.Location = new System.Drawing.Point(272, 160);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(123, 30);
             this.btnDelete.TabIndex = 47;
             this.btnDelete.Text = "Sil";
             this.btnDelete.UseVisualStyleBackColor = false;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.btnDelete);
+            this.groupBox1.Controls.Add(this.tbxMember);
+            this.groupBox1.Controls.Add(this.btnUpdate);
+            this.groupBox1.Controls.Add(this.tbxUpdateName);
+            this.groupBox1.Controls.Add(this.tbxUpdateRoles);
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.tbxUpdateLastName);
+            this.groupBox1.Controls.Add(this.tbxUpdateIdentity);
+            this.groupBox1.Location = new System.Drawing.Point(12, 4);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(413, 262);
+            this.groupBox1.TabIndex = 48;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "groupBox1";
+            // 
             // frmMembers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(992, 510);
-            this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.btnUpdate);
-            this.Controls.Add(this.tbxUpdateRoles);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.tbxUpdateLastName);
-            this.Controls.Add(this.tbxUpdateIdentity);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.tbxUpdateName);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.tbxMember);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgwMembers);
             this.Controls.Add(this.gbxInsertMember);
             this.Name = "frmMembers";
@@ -401,8 +413,9 @@
             this.gbxInsertMember.ResumeLayout(false);
             this.gbxInsertMember.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgwMembers)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -439,5 +452,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
