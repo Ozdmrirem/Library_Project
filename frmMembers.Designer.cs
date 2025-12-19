@@ -59,10 +59,10 @@
             this.label10 = new System.Windows.Forms.Label();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gbxUpdate = new System.Windows.Forms.GroupBox();
             this.gbxInsertMember.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgwMembers)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            this.gbxUpdate.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbxInsertMember
@@ -269,7 +269,7 @@
             // 
             // tbxMember
             // 
-            this.tbxMember.Location = new System.Drawing.Point(295, 225);
+            this.tbxMember.Location = new System.Drawing.Point(307, 242);
             this.tbxMember.Name = "tbxMember";
             this.tbxMember.Size = new System.Drawing.Size(100, 22);
             this.tbxMember.TabIndex = 37;
@@ -279,11 +279,11 @@
             // 
             this.dgwMembers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgwMembers.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgwMembers.Location = new System.Drawing.Point(0, 500);
+            this.dgwMembers.Location = new System.Drawing.Point(0, 280);
             this.dgwMembers.Name = "dgwMembers";
             this.dgwMembers.RowHeadersWidth = 51;
             this.dgwMembers.RowTemplate.Height = 24;
-            this.dgwMembers.Size = new System.Drawing.Size(992, 10);
+            this.dgwMembers.Size = new System.Drawing.Size(992, 230);
             this.dgwMembers.TabIndex = 1;
             // 
             // tbxUpdateLastName
@@ -363,7 +363,7 @@
             this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnUpdate.Location = new System.Drawing.Point(135, 160);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(123, 30);
+            this.btnUpdate.Size = new System.Drawing.Size(123, 36);
             this.btnUpdate.TabIndex = 46;
             this.btnUpdate.Text = "Güncelle";
             this.btnUpdate.UseVisualStyleBackColor = true;
@@ -371,40 +371,42 @@
             // btnDelete
             // 
             this.btnDelete.BackColor = System.Drawing.Color.Red;
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnDelete.Location = new System.Drawing.Point(272, 160);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(123, 30);
+            this.btnDelete.Size = new System.Drawing.Size(123, 36);
             this.btnDelete.TabIndex = 47;
             this.btnDelete.Text = "Sil";
             this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            // groupBox1
+            // gbxUpdate
             // 
-            this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.btnDelete);
-            this.groupBox1.Controls.Add(this.tbxMember);
-            this.groupBox1.Controls.Add(this.btnUpdate);
-            this.groupBox1.Controls.Add(this.tbxUpdateName);
-            this.groupBox1.Controls.Add(this.tbxUpdateRoles);
-            this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.tbxUpdateLastName);
-            this.groupBox1.Controls.Add(this.tbxUpdateIdentity);
-            this.groupBox1.Location = new System.Drawing.Point(12, 4);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(413, 262);
-            this.groupBox1.TabIndex = 48;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.gbxUpdate.Controls.Add(this.label9);
+            this.gbxUpdate.Controls.Add(this.btnDelete);
+            this.gbxUpdate.Controls.Add(this.tbxMember);
+            this.gbxUpdate.Controls.Add(this.btnUpdate);
+            this.gbxUpdate.Controls.Add(this.tbxUpdateName);
+            this.gbxUpdate.Controls.Add(this.tbxUpdateRoles);
+            this.gbxUpdate.Controls.Add(this.label8);
+            this.gbxUpdate.Controls.Add(this.label10);
+            this.gbxUpdate.Controls.Add(this.label7);
+            this.gbxUpdate.Controls.Add(this.tbxUpdateLastName);
+            this.gbxUpdate.Controls.Add(this.tbxUpdateIdentity);
+            this.gbxUpdate.Location = new System.Drawing.Point(12, 4);
+            this.gbxUpdate.Name = "gbxUpdate";
+            this.gbxUpdate.Size = new System.Drawing.Size(413, 270);
+            this.gbxUpdate.TabIndex = 48;
+            this.gbxUpdate.TabStop = false;
+            this.gbxUpdate.Text = "Güncelle";
             // 
             // frmMembers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(992, 510);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.gbxUpdate);
             this.Controls.Add(this.dgwMembers);
             this.Controls.Add(this.gbxInsertMember);
             this.Name = "frmMembers";
@@ -413,8 +415,8 @@
             this.gbxInsertMember.ResumeLayout(false);
             this.gbxInsertMember.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgwMembers)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.gbxUpdate.ResumeLayout(false);
+            this.gbxUpdate.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -452,6 +454,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox gbxUpdate;
     }
 }

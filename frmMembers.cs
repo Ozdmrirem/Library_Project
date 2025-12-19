@@ -72,7 +72,7 @@ namespace Library_Project
                             }
                         }
 
-                        transaction.Commit(); 
+                        transaction.Commit();
 
                         MessageBox.Show("Veriler eklendi.");
                     }
@@ -84,7 +84,7 @@ namespace Library_Project
                 }
             }
         }
-        
+
 
         private void AssignRoleToUser(SqlConnection conn, SqlTransaction transaction, int insertedUserId, int roleId)
         {
@@ -104,6 +104,14 @@ namespace Library_Project
         {
             ChangePassive();
             BringAndSearchMemberDatas();
+
+            foreach (Control item in gbxUpdate.Controls)
+            {
+                if (item is TextBox)
+                {
+                    item.Enabled = false;
+                }
+            }
         }
 
         private void BringAndSearchMemberDatas()
@@ -119,13 +127,13 @@ namespace Library_Project
                     cmd.Parameters.AddWithValue("@memberName", '%' + tbxMember.Text + '%');
                     cmd.Parameters.AddWithValue("@identityNumber", '%' + tbxMember.Text + '%');
 
-                   
-                        SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
-                        DataSet dataSet = new DataSet();
-                        dataAdapter.Fill(dataSet);
 
-                        dgwMembers.DataSource = dataSet.Tables[0];
-                    
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
+                    DataSet dataSet = new DataSet();
+                    dataAdapter.Fill(dataSet);
+
+                    dgwMembers.DataSource = dataSet.Tables[0];
+
                 }
             }
         }
@@ -175,10 +183,28 @@ namespace Library_Project
         {
             _selectedUserId = Convert.ToInt32(dgwMembers.CurrentRow.Cells[0].Value);
             tbxUpdateName.Text = dgwMembers.CurrentRow.Cells[1].Value.ToString();
-            tbxUpdateLastName.Text = dgwMembers.CurrentRow.Cells[2].Value.ToString(); 
+            tbxUpdateLastName.Text = dgwMembers.CurrentRow.Cells[2].Value.ToString();
             tbxUpdateIdentity.Text = dgwMembers.CurrentRow.Cells[3].Value.ToString();
             tbxUpdateRoles.Text = dgwMembers.CurrentRow.Cells[4].Value.ToString();
 
         }
-    }    
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection conn = SqlCon.Connect())
+            {
+                conn.Open();
+
+                string query = "UPDATE AppUsers SET Status = 0 WHERE UserId=@userId";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@userId", _selectedUserId);
+
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Seçili üye silindi.");
+                }
+            }
+        }
+    }
 }
