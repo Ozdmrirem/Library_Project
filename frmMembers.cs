@@ -120,7 +120,7 @@ namespace Library_Project
             {
                 conn.Open();
 
-                string query = "SELECT au.FirstName,au.LastName, STRING_AGG(ar.RoleName, ' , ') as Roles ,au.IdentityNumber,au.BirthDate,au.CreatedDate FROM AppUsers au INNER JOIN UserRoles ur ON ur.UserId = au.UserId INNER JOIN AppRoles ar ON ar.RoleId = ur.RoleId GROUP BY  au.FirstName,au.LastName,au.IdentityNumber,au.BirthDate,au.CreatedDate HAVING (au.FirstName + ' ' + au.LastName LIKE @memberName) OR (au.IdentityNumber LIKE @identityNumber) ";
+                string query = "SELECT au.FirstName,au.LastName, STRING_AGG(ar.RoleName, ' , ') as Roles ,au.IdentityNumber,au.BirthDate,au.CreatedDate FROM AppUsers au INNER JOIN UserRoles ur ON ur.UserId = au.UserId INNER JOIN AppRoles ar ON ar.RoleId = ur.RoleId WHERE au.Status = 1 GROUP BY  au.FirstName,au.LastName,au.IdentityNumber,au.BirthDate,au.CreatedDate HAVING (au.FirstName + ' ' + au.LastName LIKE @memberName) OR (au.IdentityNumber LIKE @identityNumber) ";
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
@@ -203,6 +203,7 @@ namespace Library_Project
 
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Seçili üye silindi.");
+                    BringAndSearchMemberDatas();
                 }
             }
         }
