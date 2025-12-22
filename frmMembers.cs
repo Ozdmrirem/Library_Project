@@ -207,5 +207,12 @@ namespace Library_Project
                 }
             }
         }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            frmUpdateMembers frmUpdateMembers = new frmUpdateMembers(_selectedUserId);
+            frmUpdateMembers.ShowDialog();
+        }
+
     }
 }

@@ -367,6 +367,7 @@
             this.btnUpdate.TabIndex = 46;
             this.btnUpdate.Text = "Güncelle";
             this.btnUpdate.UseVisualStyleBackColor = true;
+
             // 
             // btnDelete
             // 
