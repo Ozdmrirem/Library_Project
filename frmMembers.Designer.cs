@@ -269,9 +269,9 @@
             // 
             // tbxMember
             // 
-            this.tbxMember.Location = new System.Drawing.Point(307, 242);
+            this.tbxMember.Location = new System.Drawing.Point(235, 226);
             this.tbxMember.Name = "tbxMember";
-            this.tbxMember.Size = new System.Drawing.Size(100, 22);
+            this.tbxMember.Size = new System.Drawing.Size(160, 22);
             this.tbxMember.TabIndex = 37;
             this.tbxMember.TextChanged += new System.EventHandler(this.tbxMember_TextChanged);
             // 
@@ -367,7 +367,7 @@
             this.btnUpdate.TabIndex = 46;
             this.btnUpdate.Text = "Güncelle";
             this.btnUpdate.UseVisualStyleBackColor = true;
-
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click_1);
             // 
             // btnDelete
             // 
@@ -395,6 +395,7 @@
             this.gbxUpdate.Controls.Add(this.label7);
             this.gbxUpdate.Controls.Add(this.tbxUpdateLastName);
             this.gbxUpdate.Controls.Add(this.tbxUpdateIdentity);
+            this.gbxUpdate.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.gbxUpdate.Location = new System.Drawing.Point(12, 4);
             this.gbxUpdate.Name = "gbxUpdate";
             this.gbxUpdate.Size = new System.Drawing.Size(413, 270);

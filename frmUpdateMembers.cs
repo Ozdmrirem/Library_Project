@@ -14,9 +14,12 @@ namespace Library_Project
     public partial class frmUpdateMembers : Form
     {
         int _selectedUserId;
-        public frmUpdateMembers(int selectedUserId)
+        public frmUpdateMembers()
         {
             InitializeComponent();
+        }
+        public frmUpdateMembers(int selectedUserId) : this()
+        {
             _selectedUserId = selectedUserId;
         }
 
@@ -33,7 +36,8 @@ namespace Library_Project
             using (SqlConnection conn = SqlCon.Connect())
             {
                 conn.Open();
-                string query = "SELECT \r\nau.UserId,au.FirstName,au.LastName, \r\nSTRING_AGG(ar.RoleName, ' , ') as Roles ,\r\nau.IdentityNumber,au.BirthDate,au.CreatedDate,au.Gender,au.UserName,au.Password\r\nFROM AppUsers au \r\nINNER JOIN UserRoles ur \r\nON ur.UserId = au.UserId \r\nINNER JOIN AppRoles ar \r\nON ar.RoleId = ur.RoleId \r\nWHERE au.UserId = @userId\r\nGROUP BY \r\nau.UserId,au.FirstName,au.LastName,au.IdentityNumber,au.BirthDate,au.CreatedDate,au.Gender,au.UserName,au.Password";
+                string query = "SELECT \r\nau.UserId, au.FirstName, au.LastName,\r\nSTRING_AGG(ar.RoleName, ' , ') AS Roles,\r\nau.IdentityNumber, au.BirthDate, au.CreatedDate, au.Gender, au.UserName, au.Password\r\nFROM AppUsers au \r\nINNER JOIN UserRoles ur ON ur.UserId = au.UserId \r\nINNER JOIN AppRoles ar ON ar.RoleId = ur.RoleId\r\nWHERE au.UserId = @userId\r\nGROUP BY  \r\nau.UserId, au.FirstName, au.LastName, au.IdentityNumber, au.BirthDate, au.CreatedDate, au.Gender, au.UserName, au.Password";
+
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@userId", _selectedUserId);
@@ -56,6 +60,7 @@ namespace Library_Project
                             {
                                 rbWoman.Checked = true;
                             }
+
                             string roles = dt["Roles"].ToString();
                             if(roles.Contains("Superadmin"))
                             {
@@ -82,6 +87,16 @@ namespace Library_Project
                     }
                 }
             }
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            ModifyUserRoles();
+        }
+
+        private void ModifyUserRoles()
+        {
+            throw new NotImplementedException();
         }
     }
 }

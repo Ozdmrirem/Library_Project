@@ -33,7 +33,7 @@
             this.tbxUserName = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.tbxLastName = new System.Windows.Forms.TextBox();
-            this.btnInsert = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
             this.chkSuperAdmin = new System.Windows.Forms.CheckBox();
             this.chkAdmin = new System.Windows.Forms.CheckBox();
             this.chkMember = new System.Windows.Forms.CheckBox();
@@ -46,6 +46,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tbxFirstName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // tbxPassword
@@ -92,15 +93,16 @@
             this.tbxLastName.Size = new System.Drawing.Size(260, 24);
             this.tbxLastName.TabIndex = 50;
             // 
-            // btnInsert
+            // btnUpdate
             // 
-            this.btnInsert.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnInsert.Location = new System.Drawing.Point(308, 384);
-            this.btnInsert.Name = "btnInsert";
-            this.btnInsert.Size = new System.Drawing.Size(107, 33);
-            this.btnInsert.TabIndex = 49;
-            this.btnInsert.Text = "Kaydet";
-            this.btnInsert.UseVisualStyleBackColor = true;
+            this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnUpdate.Location = new System.Drawing.Point(155, 392);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(260, 33);
+            this.btnUpdate.TabIndex = 49;
+            this.btnUpdate.Text = "Güncelle";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // chkSuperAdmin
             // 
@@ -220,17 +222,29 @@
             this.label1.TabIndex = 37;
             this.label1.Text = "Ad :";
             // 
+            // btnCancel
+            // 
+            this.btnCancel.BackColor = System.Drawing.Color.Red;
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnCancel.Location = new System.Drawing.Point(155, 431);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(260, 33);
+            this.btnCancel.TabIndex = 55;
+            this.btnCancel.Text = "İptal Et";
+            this.btnCancel.UseVisualStyleBackColor = false;
+            // 
             // frmUpdateMembers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(497, 494);
+            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.tbxPassword);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.tbxUserName);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.tbxLastName);
-            this.Controls.Add(this.btnInsert);
+            this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.chkSuperAdmin);
             this.Controls.Add(this.chkAdmin);
             this.Controls.Add(this.chkMember);
@@ -260,7 +274,7 @@
         private System.Windows.Forms.TextBox tbxUserName;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox tbxLastName;
-        private System.Windows.Forms.Button btnInsert;
+        private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.CheckBox chkSuperAdmin;
         private System.Windows.Forms.CheckBox chkAdmin;
         private System.Windows.Forms.CheckBox chkMember;
@@ -273,5 +287,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox tbxFirstName;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnCancel;
     }
 }
