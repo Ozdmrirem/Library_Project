@@ -22,7 +22,6 @@ namespace Library_Project
             lblUserId.Text=Session.ActiveUserId.ToString();
             lblRoleName.Text=Session.ActiveRoleName.ToString();
             lblUsername.Text=Session.ActiveUserName.ToString();
-
         }
 
         private void btnBooks_Click(object sender, EventArgs e)

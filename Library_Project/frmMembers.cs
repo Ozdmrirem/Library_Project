@@ -20,7 +20,6 @@ namespace Library_Project
 
         private void btnInsert_Click(object sender, EventArgs e)
         {
-
             using (SqlConnection conn = SqlCon.Connect())
             {
                 conn.Open();
@@ -29,7 +28,7 @@ namespace Library_Project
 
                 try
                 {
-                    string queryForUser = "INSERT INTO AppUsers (FirstName,LastName,IdentityNumber,Username,Password,BirthDate,Gender) VALUES (@firstName, @lastName,@identityNumber,@username,@password,@birthDate,@gender); SELECT SCOPE_IDENTITY();";
+                    string queryForUser = "INSERT INTO AppUsers (FirstName,LastName,IdentityNumber,UserName,Password,BirthDate,Gender) VALUES (@firstName, @lastName,@identityNumber,@userName,@password,@birthDate,@gender); SELECT SCOPE_IDENTITY();";
 
                     using (SqlCommand cmdForUser = new SqlCommand(queryForUser, conn, transaction))
                     {
@@ -40,12 +39,12 @@ namespace Library_Project
                         string username = tbxUserName.Text;
                         string password = tbxPassword.Text;
 
-
-                        cmdForUser.Parameters.AddWithValue("@username", tbxUserName.Text);
+                        cmdForUser.Parameters.AddWithValue("@userName", tbxUserName.Text);
                         cmdForUser.Parameters.AddWithValue("@password", tbxPassword.Text);
                         cmdForUser.Parameters.AddWithValue("@birthDate", dtpBirthDate.Value);
 
                         bool gender;
+                        
                         gender = rbMan.Checked ? true : false;
 
                         cmdForUser.Parameters.AddWithValue("@gender", gender);
@@ -71,8 +70,7 @@ namespace Library_Project
                                 AssignRoleToUser(conn, transaction, insertedUserId, 1);
                             }
                         }
-
-                        transaction.Commit(); 
+                        transaction.Commit();
 
                         MessageBox.Show("Veriler eklendi.");
                     }
@@ -84,8 +82,6 @@ namespace Library_Project
                 }
             }
         }
-        
-
         private void AssignRoleToUser(SqlConnection conn, SqlTransaction transaction, int insertedUserId, int roleId)
         {
             string queryForRole = "INSERT INTO UserRoles (RoleId, UserId) VALUES (@roleId, @userId);";
@@ -96,40 +92,45 @@ namespace Library_Project
                 cmdForRole.Parameters.AddWithValue("@userId", insertedUserId);
 
                 cmdForRole.ExecuteNonQuery();
-
             }
         }
 
         private void frmMembers_Load(object sender, EventArgs e)
         {
             ChangePassive();
-            BringMemberDatas();
-        }
+            BringAndSearchMemberDatas();
 
-        private void BringMemberDatas()
-        {
-            using (SqlConnection conn = SqlCon.Connect())
+            foreach (Control item in gbxUpdate.Controls)
             {
-
-                string query = "SELECT au.FirstName,au.LastName, STRING_AGG(ar.RoleName, ' , ') as Roles ,au.IdentityNumber,au.BirthDate,au.CreatedDate FROM AppUsers au INNER JOIN UserRoles ur ON ur.UserId = au.UserId INNER JOIN AppRoles ar ON ar.RoleId = ur.RoleId GROUP BY  au.FirstName,au.LastName,au.IdentityNumber,au.BirthDate,au.CreatedDate HAVING (au.FirstName + ' ' + au.LastName LIKE @memberName) OR (au.IdentityNumber LIKE @identityNumber) ";
-
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                if (item is TextBox)
                 {
-                    cmd.Parameters.AddWithValue("@memberName", tbxMember.Text);
-                    cmd.Parameters.AddWithValue("@identityNumber", tbxMember.Text);
-
-                    using (SqlDataReader dr = cmd.ExecuteReader())
-                    {
-                        SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
-                        DataSet dataSet = new DataSet();
-                        dataAdapter.Fill(dataSet);
-
-                        dgwMembers.DataSource = dataSet.Tables[0];
-                    }
+                    item.Enabled = false;
                 }
             }
         }
+        private void BringAndSearchMemberDatas()
+        {
+            using (SqlConnection conn = SqlCon.Connect())
+            {
+                conn.Open();
 
+                string query = " SELECT au.UserId,au.FirstName,au.LastName,STRING_AGG(ar.RoleName, ',') AS Roles,au.IdentityNumber,au.BirthDate,au.CreatedDate FROM AppUsers au INNER JOIN UserRoles ur ON ur.UserId = au.UserId INNER JOIN AppRoles ar ON ar.RoleId = ur.RoleId WHERE au.Status = 1 GROUP BY  au.UserId,au.FirstName,au.LastName,au.IdentityNumber,au.BirthDate,au.CreatedDate HAVING (au.FirstName + ' ' + au.LastName LIKE @memberName) OR (au.IdentityNumber LIKE @identityNumber)";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@memberName",'%' + tbxMember.Text+ '%');
+                    cmd.Parameters.AddWithValue("@identityNumber",'%'+tbxMember.Text +'%');
+
+
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
+                    DataSet dataSet = new DataSet();
+                    dataAdapter.Fill(dataSet);
+
+                    dgwMembers.DataSource = dataSet.Tables[0];
+
+                }
+            }
+        }
         void ChangePassive()
         {
             tbxUserName.Enabled = false;
@@ -161,9 +162,49 @@ namespace Library_Project
                 ChangePassive();
             }
         }
+
+        private void tbxMember_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(tbxMember.Text))
+            {
+                BringAndSearchMemberDatas();
+            }
+        }
+
+        int _selectedUserId;
+        private void dgwMembers_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            _selectedUserId = Convert.ToInt32(dgwMembers.CurrentRow.Cells[0].Value);
+            tbxUpdateName.Text = dgwMembers.CurrentRow.Cells[1].Value.ToString();
+            tbxUpdateLastName.Text = dgwMembers.CurrentRow.Cells[2].Value.ToString();
+            tbxUpdateIdentity.Text = dgwMembers.CurrentRow.Cells[3].Value.ToString();
+            tbxUpdateRoles.Text = dgwMembers.CurrentRow.Cells[4].Value.ToString();
+
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection conn = SqlCon.Connect())
+            {
+                conn.Open();
+
+                string query = "UPDATE AppUsers SET Status = 0 WHERE UserId=@userId";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@userId", _selectedUserId);
+
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Seçili üye silindi.");
+                    BringAndSearchMemberDatas();
+                }
+            }
+        }
+
+        private void btnUpdate_Click_1(object sender, EventArgs e)
+        {
+            frmUpdateMembers frmUpdateMembers = new frmUpdateMembers(_selectedUserId);
+            frmUpdateMembers.ShowDialog();
+        }
     }
-
-
-
-    
 }

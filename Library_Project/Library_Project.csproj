@@ -81,6 +81,12 @@
     <Compile Include="frmUpdateBooks.Designer.cs">
       <DependentUpon>frmUpdateBooks.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmUpdateMembers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUpdateMembers.Designer.cs">
+      <DependentUpon>frmUpdateMembers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Objects\Books\InsertBook.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -101,6 +107,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmUpdateBooks.resx">
       <DependentUpon>frmUpdateBooks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUpdateMembers.resx">
+      <DependentUpon>frmUpdateMembers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
