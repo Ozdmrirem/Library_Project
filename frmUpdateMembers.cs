@@ -80,7 +80,7 @@ namespace Library_Project
                                 tbxUserName.Enabled = true;
                                 tbxPassword.Enabled = true;
 
-                                tbxUserName.Text = dt["UserName"].ToString();
+                                tbxUserName.Text = dt["Username"].ToString();
                                 tbxPassword.Text = dt["Password"].ToString();
                             }
                         }
@@ -96,9 +96,65 @@ namespace Library_Project
 
         private void ModifyUserRoles()
         {
-            //
-            //
+            try
+            {
+                using (SqlConnection conn = SqlCon.Connect())
+                {
+                    conn.Open();
 
+                    using (SqlTransaction transaction = conn.BeginTransaction())
+                    {
+                        try
+                        {
+                            List<int> toBeInsertedRoles = new List<int>();
+
+                            if (chkSuperAdmin.Checked)
+                            {
+                                toBeInsertedRoles.Add(1);
+                            }
+                            if (chkAdmin.Checked)
+                            {
+                                toBeInsertedRoles.Add(2);
+                            }
+                            if (chkMember.Checked)
+                            {
+                                toBeInsertedRoles.Add(3);
+                            }
+
+                            string rolesQuery = "SELECT * FROM UserRoles WHERE UserId = @userId";
+
+                            using (SqlCommand cmd = new SqlCommand(rolesQuery, conn, transaction))
+                            {
+                                cmd.Parameters.AddWithValue("@userId", _selectedUserId);
+                                
+                                List<int> currentUserRoles = new List<int>();
+                                using (SqlDataReader dr = cmd.ExecuteReader())
+                                {
+                                    while (dr.Read())
+                                    {
+                                        currentUserRoles.Add(Convert.ToInt32(dr["RoleId"]));
+
+                                    }
+                                    foreach (var roleId in toBeInsertedRoles.Except(currentUserRoles))
+                                    {
+                                        
+                                    }
+                                }
+                            }
+                        }
+                        catch (Exception)
+                        {
+
+                            throw;
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }
