@@ -126,7 +126,7 @@ namespace Library_Project
                             using (SqlCommand cmd = new SqlCommand(rolesQuery, conn, transaction))
                             {
                                 cmd.Parameters.AddWithValue("@userId", _selectedUserId);
-                                
+
                                 List<int> currentUserRoles = new List<int>();
                                 using (SqlDataReader dr = cmd.ExecuteReader())
                                 {
@@ -135,25 +135,92 @@ namespace Library_Project
                                         currentUserRoles.Add(Convert.ToInt32(dr["RoleId"]));
 
                                     }
-                                    foreach (var roleId in toBeInsertedRoles.Except(currentUserRoles))
-                                    {
-                                        
-                                    }
                                 }
+                                foreach (var roleId in toBeInsertedRoles.Except(currentUserRoles))
+                                    {
+                                        string queryForInsert = "INSERT INTO UserRoles (RoleId,UserId) VALUES (@roleId,@userId)";
+
+                                        using (SqlCommand cmdForInsert = new SqlCommand(queryForInsert, conn, transaction))
+                                        {
+                                            cmdForInsert.Parameters.AddWithValue("@roleId", roleId);
+                                            cmdForInsert.Parameters.AddWithValue("@userId", _selectedUserId);
+
+                                            cmdForInsert.ExecuteNonQuery();
+                                        }
+                                    }
+
+                                    //Silme islemi
+                                    foreach (var roleId in currentUserRoles.Except(toBeInsertedRoles))
+                                    {
+                                        string queryForDelete = "DELETE FROM UserRoles WHERE UserId = @userId  AND RoleId = @roleId ";
+
+                                        using (SqlCommand cmdForDelete = new SqlCommand(queryForDelete, conn, transaction))
+                                        {
+                                            cmdForDelete.Parameters.AddWithValue("@userId", _selectedUserId);
+                                            cmdForDelete.Parameters.AddWithValue("@roleId", roleId);
+
+                                            cmdForDelete.ExecuteNonQuery();
+                                        }
+                                    }
+
+                                    if (toBeInsertedRoles.Contains(1))
+                                    {
+                                        if (!toBeInsertedRoles.Contains(2))
+                                        {
+                                            string insertAdminRoleQuery = "INSERT INTO UserRoles (UserId,RoleId) VALUES (@userId,@roleId)";
+
+                                            using (SqlCommand cmdForAdminInsert = new SqlCommand(insertAdminRoleQuery, conn, transaction))
+                                            {
+                                                cmdForAdminInsert.Parameters.AddWithValue("@userId", _selectedUserId);
+                                                cmdForAdminInsert.Parameters.AddWithValue("@roleId", 2);
+
+                                                cmdForAdminInsert.ExecuteNonQuery();
+                                            }
+                                        }
+
+                                        if (!toBeInsertedRoles.Contains(3))
+                                        {
+                                            string insertMemberRoleQuery = "INSERT INTO UserRoles (UserId,RoleId) VALUES (@userId,@roleId)";
+
+                                            using (SqlCommand cmdForMemberInsert = new SqlCommand(insertMemberRoleQuery, conn, transaction))
+                                            {
+                                                cmdForMemberInsert.Parameters.AddWithValue("@userId", _selectedUserId);
+                                                cmdForMemberInsert.Parameters.AddWithValue("@roleId", 3);
+
+                                                cmdForMemberInsert.ExecuteNonQuery();
+                                            }
+                                        }
+                                    }
+
+                                    else if (toBeInsertedRoles.Contains(2) && !toBeInsertedRoles.Contains(3))
+                                    {
+                                        string insertMember2RoleQuery = "INSERT INTO UserRoles (UserId,RoleId) VALUES (@userId,@roleId)";
+
+                                        using (SqlCommand cmdForMember2Insert = new SqlCommand(insertMember2RoleQuery, conn, transaction))
+                                        {
+                                            cmdForMember2Insert.Parameters.AddWithValue("@userId", _selectedUserId);
+                                            cmdForMember2Insert.Parameters.AddWithValue("@roleId", 3);
+
+                                            cmdForMember2Insert.ExecuteNonQuery();
+                                        }
+                                    }
+
+                                    transaction.Commit();
+                                    MessageBox.Show("Kullanıcı eklendi.");
+                                
                             }
                         }
-                        catch (Exception)
+                        catch (Exception ex)
                         {
-
-                            throw;
+                            transaction.Rollback();
+                            MessageBox.Show("Hata2" + ex);
                         }
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                MessageBox.Show("Hata" + ex);
             }
         }
     }
