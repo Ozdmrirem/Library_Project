@@ -92,6 +92,23 @@ namespace Library_Project
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             ModifyUserRoles();
+            ModifyUserDatas();
+        }
+
+        private void ModifyUserDatas()
+        {
+            try
+            {
+                using (SqlConnection conn = SqlCon.Connect())
+                {
+                    conn.Open();
+                    string query = "UPDATE AppUsers SET FirstName = @firstName, LastName = @lastName, IdentityNumber = @identityNumber, BirthDate = @birth  
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hata 3 : " + ex.Message);
+            }
         }
 
         private void ModifyUserRoles()
