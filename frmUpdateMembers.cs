@@ -102,7 +102,52 @@ namespace Library_Project
                 using (SqlConnection conn = SqlCon.Connect())
                 {
                     conn.Open();
-                    string query = "UPDATE AppUsers SET FirstName = @firstName, LastName = @lastName, IdentityNumber = @identityNumber, BirthDate = @birth  
+                    string queryForDatas = " UPDATE AppUsers SET FirstName = @firstName, LastName = @lastName, IdentityNumber = @identityNumber, UserName = @userName , Password = @password , BirthDate = @birthDate, Gender = @gender WHERE UserId = @userId ";
+
+                    using (SqlCommand cmd = new SqlCommand(queryForDatas, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@firstName", tbxFirstName.Text);
+                        cmd.Parameters.AddWithValue("@lastName", tbxLastName.Text);
+                        cmd.Parameters.AddWithValue("@identityNumber", tbxIdentityNumber.Text);
+                        
+
+                        string password, username;
+
+                        if (string.IsNullOrEmpty(tbxUserName.Text))
+                        {
+                            username = "Yok";
+                        }
+                        else
+                        {
+                            username = tbxUserName.Text;
+                        }
+
+
+                        cmd.Parameters.AddWithValue("@userName", username);
+
+                        if (string.IsNullOrEmpty(tbxPassword.Text))
+                        {
+                            password = "Yok";
+                        }
+                        else
+                        {
+                            password = tbxPassword.Text;
+                        }
+
+                        cmd.Parameters.AddWithValue("@password", tbxPassword.Text);
+                        cmd.Parameters.AddWithValue("@birthDate", dtpBirthDate.Value);
+
+                        bool gender;
+
+                        gender = rbMan.Checked ? true : false ;
+
+                        cmd.Parameters.AddWithValue("@gender",gender);
+                        cmd.Parameters.AddWithValue("@userId", _selectedUserId);
+
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("Kullanıcı verisi güncellendi.","Güncelleme",MessageBoxButtons.OK,MessageBoxIcon.Information);
+
+                    }
                 }
             }
             catch (Exception ex)
@@ -238,6 +283,42 @@ namespace Library_Project
             catch (Exception ex)
             {
                 MessageBox.Show("Hata" + ex);
+            }
+        }
+
+        private void chkSuperAdmin_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkSuperAdmin.Checked)
+            {
+                chkMember.Checked = true;
+                chkAdmin.Checked = true;
+
+                chkAdmin.Enabled = false;
+                chkMember.Enabled = false;
+            }
+            else
+            {
+                chkMember.Checked = false;
+                chkAdmin.Checked = false;
+
+                chkAdmin.Enabled = true;
+                chkMember.Enabled = true;
+            }
+        }
+
+        private void chkAdmin_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkAdmin.Checked)
+            {
+                chkMember.Checked = true;
+
+                chkMember.Enabled = false;
+            }
+            else
+            {
+                chkMember.Checked = false;
+
+                chkMember.Enabled = true;
             }
         }
     }

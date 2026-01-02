@@ -113,6 +113,7 @@
             this.chkSuperAdmin.TabIndex = 48;
             this.chkSuperAdmin.Text = "Yönetici";
             this.chkSuperAdmin.UseVisualStyleBackColor = true;
+            this.chkSuperAdmin.CheckedChanged += new System.EventHandler(this.chkSuperAdmin_CheckedChanged);
             // 
             // chkAdmin
             // 
@@ -123,6 +124,7 @@
             this.chkAdmin.TabIndex = 47;
             this.chkAdmin.Text = "Moderatör";
             this.chkAdmin.UseVisualStyleBackColor = true;
+            this.chkAdmin.CheckedChanged += new System.EventHandler(this.chkAdmin_CheckedChanged);
             // 
             // chkMember
             // 
@@ -237,7 +239,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(497, 494);
+            this.ClientSize = new System.Drawing.Size(465, 494);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.tbxPassword);
             this.Controls.Add(this.label4);
