@@ -285,6 +285,7 @@
             this.dgwMembers.RowTemplate.Height = 24;
             this.dgwMembers.Size = new System.Drawing.Size(992, 230);
             this.dgwMembers.TabIndex = 1;
+           
             // 
             // tbxUpdateLastName
             // 
@@ -367,7 +368,7 @@
             this.btnUpdate.TabIndex = 46;
             this.btnUpdate.Text = "Güncelle";
             this.btnUpdate.UseVisualStyleBackColor = true;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click_1);
+            
             // 
             // btnDelete
             // 

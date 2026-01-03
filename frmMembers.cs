@@ -118,8 +118,8 @@ namespace Library_Project
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
-                    cmd.Parameters.AddWithValue("@memberName",'%' + tbxMember.Text+ '%');
-                    cmd.Parameters.AddWithValue("@identityNumber",'%'+tbxMember.Text +'%');
+                    cmd.Parameters.AddWithValue("@memberName", '%' + tbxMember.Text+ '%' );
+                    cmd.Parameters.AddWithValue("@identityNumber", '%' +tbxMember.Text + '%' );
 
 
                     SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
@@ -171,16 +171,7 @@ namespace Library_Project
             }
         }
 
-        int _selectedUserId;
-        private void dgwMembers_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            _selectedUserId = Convert.ToInt32(dgwMembers.CurrentRow.Cells[0].Value);
-            tbxUpdateName.Text = dgwMembers.CurrentRow.Cells[1].Value.ToString();
-            tbxUpdateLastName.Text = dgwMembers.CurrentRow.Cells[2].Value.ToString();
-            tbxUpdateIdentity.Text = dgwMembers.CurrentRow.Cells[3].Value.ToString();
-            tbxUpdateRoles.Text = dgwMembers.CurrentRow.Cells[4].Value.ToString();
-
-        }
+        
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
@@ -201,10 +192,21 @@ namespace Library_Project
             }
         }
 
-        private void btnUpdate_Click_1(object sender, EventArgs e)
+        private void btnUpdate_Click(object sender, EventArgs e)
         {
             frmUpdateMembers frmUpdateMembers = new frmUpdateMembers(_selectedUserId);
             frmUpdateMembers.ShowDialog();
+        }
+
+        int _selectedUserId;
+        private void dgwMembers_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            _selectedUserId = Convert.ToInt32(dgwMembers.CurrentRow.Cells[0].Value);
+            tbxUpdateName.Text = dgwMembers.CurrentRow.Cells[1].Value.ToString();
+            tbxUpdateLastName.Text = dgwMembers.CurrentRow.Cells[2].Value.ToString();
+            tbxUpdateIdentity.Text = dgwMembers.CurrentRow.Cells[3].Value.ToString();
+            tbxUpdateRoles.Text = dgwMembers.CurrentRow.Cells[4].Value.ToString();
+
         }
     }
 }
