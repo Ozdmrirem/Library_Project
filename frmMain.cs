@@ -37,5 +37,12 @@ namespace Library_Project
             members.Show();
             this.Hide();
         }
+
+        private void btnLoans_Click(object sender, EventArgs e)
+        {
+            frmBookLoans loans = new frmBookLoans();
+            loans.Show();
+            this.Hide();
+        }
     }
 }

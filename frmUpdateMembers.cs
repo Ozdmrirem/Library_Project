@@ -102,7 +102,7 @@ namespace Library_Project
                 using (SqlConnection conn = SqlCon.Connect())
                 {
                     conn.Open();
-                    string queryForDatas = " UPDATE AppUsers SET FirstName = @firstName, LastName = @lastName, IdentityNumber = @identityNumber, UserName = @userName , Password = @password , BirthDate = @birthDate, Gender = @gender WHERE UserId = @userId ";
+                    string queryForDatas = " UPDATE AppUsers SET FirstName = @firstName, LastName = @lastName, IdentityNumber = @identityNumber, UserName = @userName , Password = @password , BirthDate = @birthDate, Gender = @gender, ModifiedBy = @modifiedBy WHERE UserId = @userId ";
 
                     using (SqlCommand cmd = new SqlCommand(queryForDatas, conn))
                     {
@@ -142,6 +142,8 @@ namespace Library_Project
                         gender = rbMan.Checked ? true : false ;
 
                         cmd.Parameters.AddWithValue("@gender",gender);
+                        cmd.Parameters.AddWithValue("@modifiedBy",Session.ActiveUserId);
+
                         cmd.Parameters.AddWithValue("@userId", _selectedUserId);
 
                         cmd.ExecuteNonQuery();
@@ -319,6 +321,23 @@ namespace Library_Project
                 chkMember.Checked = false;
 
                 chkMember.Enabled = true;
+            }
+        }
+
+        private void chkMember_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkMember.Checked && !chkAdmin.Checked && !chkSuperAdmin.Checked)
+            {
+                tbxPassword.Text = string.Empty;
+                tbxUserName.Text = string.Empty;
+
+                tbxUserName.Enabled = false;
+                tbxPassword.Enabled = false;
+            }
+            else
+            {
+                tbxUserName.Enabled = true;
+                tbxPassword.Enabled = true;
             }
         }
     }

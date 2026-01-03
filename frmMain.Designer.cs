@@ -33,6 +33,7 @@
             this.lblUserId = new System.Windows.Forms.Label();
             this.btnBooks = new System.Windows.Forms.Button();
             this.btnMembers = new System.Windows.Forms.Button();
+            this.btnLoans = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblUsername
@@ -75,7 +76,7 @@
             // 
             // btnMembers
             // 
-            this.btnMembers.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnMembers.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnMembers.Location = new System.Drawing.Point(251, 144);
             this.btnMembers.Name = "btnMembers";
             this.btnMembers.Size = new System.Drawing.Size(164, 36);
@@ -84,11 +85,23 @@
             this.btnMembers.UseVisualStyleBackColor = true;
             this.btnMembers.Click += new System.EventHandler(this.btnMembers_Click);
             // 
+            // btnLoans
+            // 
+            this.btnLoans.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnLoans.Location = new System.Drawing.Point(421, 144);
+            this.btnLoans.Name = "btnLoans";
+            this.btnLoans.Size = new System.Drawing.Size(158, 36);
+            this.btnLoans.TabIndex = 5;
+            this.btnLoans.Text = "Kitap Kirala";
+            this.btnLoans.UseVisualStyleBackColor = true;
+            this.btnLoans.Click += new System.EventHandler(this.btnLoans_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(689, 418);
+            this.Controls.Add(this.btnLoans);
             this.Controls.Add(this.btnMembers);
             this.Controls.Add(this.btnBooks);
             this.Controls.Add(this.lblUserId);
@@ -109,5 +122,6 @@
         private System.Windows.Forms.Label lblUserId;
         private System.Windows.Forms.Button btnBooks;
         private System.Windows.Forms.Button btnMembers;
+        private System.Windows.Forms.Button btnLoans;
     }
 }

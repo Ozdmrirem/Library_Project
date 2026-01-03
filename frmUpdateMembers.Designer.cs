@@ -135,6 +135,7 @@
             this.chkMember.TabIndex = 46;
             this.chkMember.Text = "Normal Üye";
             this.chkMember.UseVisualStyleBackColor = true;
+            this.chkMember.CheckedChanged += new System.EventHandler(this.chkMember_CheckedChanged);
             // 
             // rbMan
             // 
