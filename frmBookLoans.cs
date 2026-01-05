@@ -89,6 +89,7 @@ namespace Library_Project
             ChangeStatusOfBookControllers();
             ChangeStatusOfMemberControllers();
             BringAndSearchMembers();
+
         }
 
         private void tbxSearchBook_TextChanged(object sender, EventArgs e)
@@ -100,6 +101,7 @@ namespace Library_Project
             }
         }
 
+        //
         int _selectedBookId;
         private void dgwBooks_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -109,6 +111,7 @@ namespace Library_Project
             tbxPublisherName.Text = dgwBooks.CurrentRow.Cells[4].Value.ToString();
             tbxPageCount.Text = dgwBooks.CurrentRow.Cells[5].Value.ToString();
             tbxStock.Text = dgwBooks.CurrentRow.Cells[6].Value.ToString();
+
         }
     }
 }
