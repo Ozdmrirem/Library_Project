@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -16,6 +17,14 @@ namespace Library_Project
         public frmBookLoans()
         {
             InitializeComponent();
+        }
+
+        private void frmBookLoans_Load(object sender, EventArgs e)
+        {
+            BringAndSearchBooks();
+            ChangeStatusOfBookControllers();
+            ChangeStatusOfMemberControllers();
+            BringAndSearchMembers();
         }
         private void BringAndSearchMembers()
         {
@@ -65,7 +74,7 @@ namespace Library_Project
         {
             foreach (Control item in gbxBooks.Controls)
             {
-                if(item is TextBox)
+                if (item is TextBox)
                 {
                     item.Enabled = false;
                 }
@@ -83,15 +92,6 @@ namespace Library_Project
             }
         }
 
-        private void frmBookLoans_Load(object sender, EventArgs e)
-        {
-            BringAndSearchBooks();
-            ChangeStatusOfBookControllers();
-            ChangeStatusOfMemberControllers();
-            BringAndSearchMembers();
-
-        }
-
         private void tbxSearchBook_TextChanged(object sender, EventArgs e)
         {
 
@@ -101,7 +101,7 @@ namespace Library_Project
             }
         }
 
-        //
+
         int _selectedBookId;
         private void dgwBooks_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -114,6 +114,57 @@ namespace Library_Project
 
         }
 
-        //
+        private void tbxSearchMember_TextChanged(object sender, EventArgs e)
+        {
+            if (tbxSearchMember.Text != string.Empty)
+            {
+                BringAndSearchMembers();
+            }
+        }
+
+        int _selectedMemberId;
+        private void dgwMembers_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            _selectedMemberId = Convert.ToInt32(dgwMembers.CurrentRow.Cells[0].Value);
+            tbxFirstName.Text = dgwMembers.CurrentRow.Cells[1].Value.ToString();
+            tbxLastName.Text = dgwMembers.CurrentRow.Cells[2].Value.ToString();
+            tbxIdentityNumber.Text = dgwMembers.CurrentRow.Cells[4].Value.ToString();
+            DateTime birthDate = Convert.ToDateTime(dgwMembers.CurrentRow.Cells[5].Value);
+            tbxBirthDate.Text = birthDate.ToString("dd/MM/yyyy");
+
+        }
+
+        private void btnProccessDone_Click(object sender, EventArgs e)
+        {
+            if (_selectedMemberId < 0 || _selectedBookId < 0 || dtpDueDate.Value < DateTime.Now.AddDays(1))
+            {
+                MessageBox.Show("Öncelikle kitap, üye ve tarih bilgilerinin doğru olduğundan emin olunuz!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                DialogResult result = MessageBox.Show($"Kaydı tamamlamak istediğinizden emin misiniz?\nKitap : {tbxBookName.Text.ToString()}\nÜye : {tbxFirstName + " " + tbxLastName.Text.ToString()}", "Uyarı", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    using (SqlConnection conn = SqlCon.Connect())
+                    {
+                        conn.Open();
+
+                        string insertQuery = "INSERT INTO BookLoans (UserId,BookId,LoanDate,DueDate) VALUES (@userId,@bookId,@loanDate,@dueDate)";
+
+                        using (SqlCommand cmd = new SqlCommand(insertQuery, conn))
+                        {
+                            cmd.Parameters.AddWithValue("@userId", _selectedMemberId);
+                            cmd.Parameters.AddWithValue("@bookId", _selectedBookId);
+                            cmd.Parameters.AddWithValue("@loanDate", DateTime.Now);
+                            cmd.Parameters.AddWithValue("@dueDate", dtpDueDate.Value);
+
+                            cmd.ExecuteNonQuery();
+                            MessageBox.Show("Kitap kiralama işlemi başarıyla tamamlandı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        }
+                    }
+                }
+            }
+        }
     }
 }

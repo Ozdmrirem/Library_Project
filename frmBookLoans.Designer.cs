@@ -43,6 +43,8 @@
             this.tbxLastName = new System.Windows.Forms.TextBox();
             this.tbxIdentityNumber = new System.Windows.Forms.TextBox();
             this.gbxBooks = new System.Windows.Forms.GroupBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.tbxAuthorName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tbxBookName = new System.Windows.Forms.TextBox();
             this.tbxStock = new System.Windows.Forms.TextBox();
@@ -59,14 +61,13 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.gbxInformation = new System.Windows.Forms.GroupBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.tbxAuthorName = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.btnProccessDone = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgwBooks)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgwMembers)).BeginInit();
             this.gbxMembers.SuspendLayout();
@@ -81,19 +82,20 @@
             this.dgwBooks.Name = "dgwBooks";
             this.dgwBooks.RowHeadersWidth = 51;
             this.dgwBooks.RowTemplate.Height = 24;
-            this.dgwBooks.Size = new System.Drawing.Size(446, 203);
+            this.dgwBooks.Size = new System.Drawing.Size(497, 203);
             this.dgwBooks.TabIndex = 0;
             this.dgwBooks.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwBooks_CellClick);
             // 
             // dgwMembers
             // 
             this.dgwMembers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgwMembers.Location = new System.Drawing.Point(476, 361);
+            this.dgwMembers.Location = new System.Drawing.Point(531, 361);
             this.dgwMembers.Name = "dgwMembers";
             this.dgwMembers.RowHeadersWidth = 51;
             this.dgwMembers.RowTemplate.Height = 24;
-            this.dgwMembers.Size = new System.Drawing.Size(460, 203);
+            this.dgwMembers.Size = new System.Drawing.Size(517, 203);
             this.dgwMembers.TabIndex = 1;
+            this.dgwMembers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwMembers_CellClick);
             // 
             // dtpDueDate
             // 
@@ -116,9 +118,9 @@
             this.gbxMembers.Controls.Add(this.tbxLastName);
             this.gbxMembers.Controls.Add(this.tbxIdentityNumber);
             this.gbxMembers.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.gbxMembers.Location = new System.Drawing.Point(452, 12);
+            this.gbxMembers.Location = new System.Drawing.Point(399, 12);
             this.gbxMembers.Name = "gbxMembers";
-            this.gbxMembers.Size = new System.Drawing.Size(436, 246);
+            this.gbxMembers.Size = new System.Drawing.Size(436, 288);
             this.gbxMembers.TabIndex = 49;
             this.gbxMembers.TabStop = false;
             this.gbxMembers.Text = "Üye Bilgileri";
@@ -138,9 +140,9 @@
             this.btnCancel.BackColor = System.Drawing.Color.Red;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnCancel.Location = new System.Drawing.Point(6, 182);
+            this.btnCancel.Location = new System.Drawing.Point(136, 237);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(107, 32);
+            this.btnCancel.Size = new System.Drawing.Size(260, 32);
             this.btnCancel.TabIndex = 47;
             this.btnCancel.Text = "İptal Et";
             this.btnCancel.UseVisualStyleBackColor = false;
@@ -148,9 +150,9 @@
             // btnHistory
             // 
             this.btnHistory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnHistory.Location = new System.Drawing.Point(136, 182);
+            this.btnHistory.Location = new System.Drawing.Point(136, 180);
             this.btnHistory.Name = "btnHistory";
-            this.btnHistory.Size = new System.Drawing.Size(260, 32);
+            this.btnHistory.Size = new System.Drawing.Size(260, 49);
             this.btnHistory.TabIndex = 46;
             this.btnHistory.Text = "Geçmiş İşlemler";
             this.btnHistory.UseVisualStyleBackColor = true;
@@ -232,10 +234,28 @@
             this.gbxBooks.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.gbxBooks.Location = new System.Drawing.Point(16, 12);
             this.gbxBooks.Name = "gbxBooks";
-            this.gbxBooks.Size = new System.Drawing.Size(413, 246);
+            this.gbxBooks.Size = new System.Drawing.Size(364, 246);
             this.gbxBooks.TabIndex = 50;
             this.gbxBooks.TabStop = false;
             this.gbxBooks.Text = "Kitap Bilgileri";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label20.Location = new System.Drawing.Point(43, 77);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(54, 18);
+            this.label20.TabIndex = 46;
+            this.label20.Text = "Yazar :";
+            // 
+            // tbxAuthorName
+            // 
+            this.tbxAuthorName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.tbxAuthorName.Location = new System.Drawing.Point(104, 74);
+            this.tbxAuthorName.Name = "tbxAuthorName";
+            this.tbxAuthorName.Size = new System.Drawing.Size(236, 24);
+            this.tbxAuthorName.TabIndex = 47;
             // 
             // label1
             // 
@@ -252,7 +272,7 @@
             this.tbxBookName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.tbxBookName.Location = new System.Drawing.Point(104, 37);
             this.tbxBookName.Name = "tbxBookName";
-            this.tbxBookName.Size = new System.Drawing.Size(260, 24);
+            this.tbxBookName.Size = new System.Drawing.Size(236, 24);
             this.tbxBookName.TabIndex = 39;
             // 
             // tbxStock
@@ -260,7 +280,7 @@
             this.tbxStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.tbxStock.Location = new System.Drawing.Point(104, 184);
             this.tbxStock.Name = "tbxStock";
-            this.tbxStock.Size = new System.Drawing.Size(260, 24);
+            this.tbxStock.Size = new System.Drawing.Size(236, 24);
             this.tbxStock.TabIndex = 45;
             // 
             // label2
@@ -298,7 +318,7 @@
             this.tbxPublisherName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.tbxPublisherName.Location = new System.Drawing.Point(104, 112);
             this.tbxPublisherName.Name = "tbxPublisherName";
-            this.tbxPublisherName.Size = new System.Drawing.Size(260, 24);
+            this.tbxPublisherName.Size = new System.Drawing.Size(236, 24);
             this.tbxPublisherName.TabIndex = 43;
             // 
             // tbxPageCount
@@ -306,7 +326,7 @@
             this.tbxPageCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.tbxPageCount.Location = new System.Drawing.Point(104, 148);
             this.tbxPageCount.Name = "tbxPageCount";
-            this.tbxPageCount.Size = new System.Drawing.Size(260, 24);
+            this.tbxPageCount.Size = new System.Drawing.Size(236, 24);
             this.tbxPageCount.TabIndex = 42;
             // 
             // label5
@@ -323,7 +343,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label6.Location = new System.Drawing.Point(16, 329);
+            this.label6.Location = new System.Drawing.Point(8, 329);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(156, 20);
             this.label6.TabIndex = 52;
@@ -332,9 +352,9 @@
             // tbxSearchBook
             // 
             this.tbxSearchBook.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.tbxSearchBook.Location = new System.Drawing.Point(278, 327);
+            this.tbxSearchBook.Location = new System.Drawing.Point(267, 326);
             this.tbxSearchBook.Name = "tbxSearchBook";
-            this.tbxSearchBook.Size = new System.Drawing.Size(180, 24);
+            this.tbxSearchBook.Size = new System.Drawing.Size(242, 24);
             this.tbxSearchBook.TabIndex = 54;
             this.tbxSearchBook.TextChanged += new System.EventHandler(this.tbxSearchBook_TextChanged);
             // 
@@ -342,7 +362,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label11.Location = new System.Drawing.Point(197, 330);
+            this.label11.Location = new System.Drawing.Point(186, 329);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(75, 18);
             this.label11.TabIndex = 53;
@@ -351,16 +371,16 @@
             // tbxSearchMember
             // 
             this.tbxSearchMember.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.tbxSearchMember.Location = new System.Drawing.Point(721, 327);
+            this.tbxSearchMember.Location = new System.Drawing.Point(776, 327);
             this.tbxSearchMember.Name = "tbxSearchMember";
-            this.tbxSearchMember.Size = new System.Drawing.Size(215, 24);
+            this.tbxSearchMember.Size = new System.Drawing.Size(272, 24);
             this.tbxSearchMember.TabIndex = 57;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label12.Location = new System.Drawing.Point(647, 330);
+            this.label12.Location = new System.Drawing.Point(702, 330);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(68, 18);
             this.label12.TabIndex = 56;
@@ -370,7 +390,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label13.Location = new System.Drawing.Point(476, 329);
+            this.label13.Location = new System.Drawing.Point(531, 329);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(140, 20);
             this.label13.TabIndex = 55;
@@ -384,57 +404,12 @@
             this.gbxInformation.Controls.Add(this.label16);
             this.gbxInformation.Controls.Add(this.label15);
             this.gbxInformation.Controls.Add(this.label14);
-            this.gbxInformation.Location = new System.Drawing.Point(904, 14);
+            this.gbxInformation.Location = new System.Drawing.Point(861, 12);
             this.gbxInformation.Name = "gbxInformation";
             this.gbxInformation.Size = new System.Drawing.Size(187, 246);
             this.gbxInformation.TabIndex = 58;
             this.gbxInformation.TabStop = false;
             this.gbxInformation.Text = "Bilgi Kutusu";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(6, 32);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(38, 16);
-            this.label14.TabIndex = 0;
-            this.label14.Text = "Tarih";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(6, 70);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(35, 16);
-            this.label15.TabIndex = 1;
-            this.label15.Text = "Saat";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(6, 104);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(96, 16);
-            this.label16.TabIndex = 2;
-            this.label16.Text = "Güncel Fiyatlar";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(6, 140);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(144, 16);
-            this.label17.TabIndex = 3;
-            this.label17.Text = "Anlık Kiralıktaki Kitaplar";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(6, 180);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(182, 16);
-            this.label18.TabIndex = 4;
-            this.label18.Text = "Bugüne Kadar Kiralanan Adet";
             // 
             // label19
             // 
@@ -445,29 +420,69 @@
             this.label19.TabIndex = 5;
             this.label19.Text = "Toplam Üye Sayısı";
             // 
-            // label20
+            // label18
             // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label20.Location = new System.Drawing.Point(43, 77);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(54, 18);
-            this.label20.TabIndex = 46;
-            this.label20.Text = "Yazar :";
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(6, 180);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(182, 16);
+            this.label18.TabIndex = 4;
+            this.label18.Text = "Bugüne Kadar Kiralanan Adet";
             // 
-            // tbxAuthorName
+            // label17
             // 
-            this.tbxAuthorName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.tbxAuthorName.Location = new System.Drawing.Point(104, 74);
-            this.tbxAuthorName.Name = "tbxAuthorName";
-            this.tbxAuthorName.Size = new System.Drawing.Size(260, 24);
-            this.tbxAuthorName.TabIndex = 47;
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(6, 140);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(144, 16);
+            this.label17.TabIndex = 3;
+            this.label17.Text = "Anlık Kiralıktaki Kitaplar";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(6, 104);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(96, 16);
+            this.label16.TabIndex = 2;
+            this.label16.Text = "Güncel Fiyatlar";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(6, 70);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(35, 16);
+            this.label15.TabIndex = 1;
+            this.label15.Text = "Saat";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(6, 32);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(38, 16);
+            this.label14.TabIndex = 0;
+            this.label14.Text = "Tarih";
+            // 
+            // btnProccessDone
+            // 
+            this.btnProccessDone.BackColor = System.Drawing.Color.Chartreuse;
+            this.btnProccessDone.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnProccessDone.Location = new System.Drawing.Point(861, 273);
+            this.btnProccessDone.Name = "btnProccessDone";
+            this.btnProccessDone.Size = new System.Drawing.Size(187, 43);
+            this.btnProccessDone.TabIndex = 59;
+            this.btnProccessDone.Text = "Tamamla";
+            this.btnProccessDone.UseVisualStyleBackColor = false;
+            this.btnProccessDone.Click += new System.EventHandler(this.btnProccessDone_Click);
             // 
             // frmBookLoans
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1103, 599);
+            this.ClientSize = new System.Drawing.Size(1065, 696);
+            this.Controls.Add(this.btnProccessDone);
             this.Controls.Add(this.gbxInformation);
             this.Controls.Add(this.tbxSearchMember);
             this.Controls.Add(this.label12);
@@ -539,5 +554,6 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox tbxAuthorName;
+        private System.Windows.Forms.Button btnProccessDone;
     }
 }
