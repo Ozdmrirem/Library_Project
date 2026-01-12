@@ -161,12 +161,16 @@ namespace Library_Project
                             cmd.ExecuteNonQuery();
                             MessageBox.Show("Kitap kiralama işlemi başarıyla tamamlandı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                            ///////
-
                         }
                     }
                 }
             }
+        }
+
+        private void btnStateOfDue_Click(object sender, EventArgs e)
+        {
+            frmStateOfDue frmStateOfDue = new frmStateOfDue();
+            frmStateOfDue.ShowDialog();
         }
     }
 }

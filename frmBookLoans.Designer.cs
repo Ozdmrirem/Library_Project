@@ -68,6 +68,7 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.btnProccessDone = new System.Windows.Forms.Button();
+            this.btnStateOfDue = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgwBooks)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgwMembers)).BeginInit();
             this.gbxMembers.SuspendLayout();
@@ -120,7 +121,7 @@
             this.gbxMembers.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.gbxMembers.Location = new System.Drawing.Point(399, 12);
             this.gbxMembers.Name = "gbxMembers";
-            this.gbxMembers.Size = new System.Drawing.Size(436, 288);
+            this.gbxMembers.Size = new System.Drawing.Size(436, 246);
             this.gbxMembers.TabIndex = 49;
             this.gbxMembers.TabStop = false;
             this.gbxMembers.Text = "Üye Bilgileri";
@@ -140,9 +141,9 @@
             this.btnCancel.BackColor = System.Drawing.Color.Red;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnCancel.Location = new System.Drawing.Point(136, 237);
+            this.btnCancel.Location = new System.Drawing.Point(11, 180);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(260, 32);
+            this.btnCancel.Size = new System.Drawing.Size(102, 49);
             this.btnCancel.TabIndex = 47;
             this.btnCancel.Text = "İptal Et";
             this.btnCancel.UseVisualStyleBackColor = false;
@@ -469,19 +470,31 @@
             // 
             this.btnProccessDone.BackColor = System.Drawing.Color.Chartreuse;
             this.btnProccessDone.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnProccessDone.Location = new System.Drawing.Point(861, 273);
+            this.btnProccessDone.Location = new System.Drawing.Point(399, 265);
             this.btnProccessDone.Name = "btnProccessDone";
-            this.btnProccessDone.Size = new System.Drawing.Size(187, 43);
+            this.btnProccessDone.Size = new System.Drawing.Size(436, 43);
             this.btnProccessDone.TabIndex = 59;
             this.btnProccessDone.Text = "Tamamla";
             this.btnProccessDone.UseVisualStyleBackColor = false;
             this.btnProccessDone.Click += new System.EventHandler(this.btnProccessDone_Click);
+            // 
+            // btnStateOfDue
+            // 
+            this.btnStateOfDue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnStateOfDue.Location = new System.Drawing.Point(861, 265);
+            this.btnStateOfDue.Name = "btnStateOfDue";
+            this.btnStateOfDue.Size = new System.Drawing.Size(187, 43);
+            this.btnStateOfDue.TabIndex = 60;
+            this.btnStateOfDue.Text = "İade Durumu";
+            this.btnStateOfDue.UseVisualStyleBackColor = true;
+            this.btnStateOfDue.Click += new System.EventHandler(this.btnStateOfDue_Click);
             // 
             // frmBookLoans
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1065, 696);
+            this.Controls.Add(this.btnStateOfDue);
             this.Controls.Add(this.btnProccessDone);
             this.Controls.Add(this.gbxInformation);
             this.Controls.Add(this.tbxSearchMember);
@@ -555,5 +568,6 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox tbxAuthorName;
         private System.Windows.Forms.Button btnProccessDone;
+        private System.Windows.Forms.Button btnStateOfDue;
     }
 }
