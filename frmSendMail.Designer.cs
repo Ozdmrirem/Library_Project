@@ -32,10 +32,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tbxMailContent = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnSend = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -76,13 +76,13 @@
             this.textBox1.Size = new System.Drawing.Size(297, 23);
             this.textBox1.TabIndex = 3;
             // 
-            // textBox2
+            // tbxMailContent
             // 
-            this.textBox2.Location = new System.Drawing.Point(170, 141);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(297, 209);
-            this.textBox2.TabIndex = 4;
+            this.tbxMailContent.Location = new System.Drawing.Point(170, 141);
+            this.tbxMailContent.Multiline = true;
+            this.tbxMailContent.Name = "tbxMailContent";
+            this.tbxMailContent.Size = new System.Drawing.Size(297, 209);
+            this.tbxMailContent.TabIndex = 4;
             // 
             // textBox3
             // 
@@ -92,33 +92,34 @@
             this.textBox3.Size = new System.Drawing.Size(297, 23);
             this.textBox3.TabIndex = 5;
             // 
-            // button1
+            // btnCancel
             // 
-            this.button1.Location = new System.Drawing.Point(170, 370);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(132, 34);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnCancel.Location = new System.Drawing.Point(170, 370);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(132, 34);
+            this.btnCancel.TabIndex = 6;
+            this.btnCancel.Text = "İptal Et";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // button2
+            // btnSend
             // 
-            this.button2.Location = new System.Drawing.Point(321, 370);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(146, 34);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnSend.Location = new System.Drawing.Point(321, 370);
+            this.btnSend.Name = "btnSend";
+            this.btnSend.Size = new System.Drawing.Size(146, 34);
+            this.btnSend.TabIndex = 7;
+            this.btnSend.Text = "Gönder";
+            this.btnSend.UseVisualStyleBackColor = true;
             // 
             // frmSendMail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(514, 450);
+            this.Controls.Add(this.btnSend);
+            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.tbxMailContent);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -136,9 +137,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tbxMailContent;
         private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnSend;
     }
 }
