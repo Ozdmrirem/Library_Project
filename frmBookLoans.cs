@@ -50,6 +50,47 @@ namespace Library_Project
             }
         }
 
+        void InformationBox()
+        {
+            using (SqlConnection conn = SqlCon.Connect())
+            {
+                conn.Open();
+
+                string queryForCurrentLoans = "SELECT COUNT(*) AS Total FROM BookLoans WHERE Status = 1";
+
+                string queryForTotalLoans = "SELECT COUNT(*) AS Total FROM BookLoans";
+
+                string queryForTotalUsers = "SELECT COUNT(*) AS Total FROM AppUsers WHERE Status = 1";
+
+                using (SqlCommand cmdForCurrentLoans = new SqlCommand(queryForCurrentLoans, conn))
+                {
+                    using (SqlDataReader drForCurrentLoans = cmdForCurrentLoans.ExecuteReader())
+                    {
+                        int totalCurrentLoans = Convert.ToInt32(drForCurrentLoans["Total"]);
+                        lblCurrentLoans.Text = totalCurrentLoans.ToString();
+                    }
+                }
+
+                using (SqlCommand cmdForTotalLoans = new SqlCommand(queryForTotalLoans, conn))
+                {
+                    using (SqlDataReader drForTotalLoans = cmdForTotalLoans.ExecuteReader())
+                    {
+                        int totalLoans = Convert.ToInt32(drForTotalLoans["Total"]);
+                        lblTotalLoans.Text = totalLoans.ToString(); 
+                    }
+                }
+
+                using (SqlCommand cmdForTotalUsers = new SqlCommand(queryForTotalUsers, conn))
+                {
+                    using (SqlDataReader drForTotalUsers = cmdForTotalUsers.ExecuteReader())
+                    {
+                        int totalUsers = Convert.ToInt32(drForTotalUsers["Total"]);
+                        lblTotalUsers.Text = totalUsers.ToString();
+                    }
+                }
+            }
+        }
+
         void BringAndSearchBooks()
         {
             using (SqlConnection conn = SqlCon.Connect())

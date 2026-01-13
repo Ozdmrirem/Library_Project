@@ -61,12 +61,11 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.gbxInformation = new System.Windows.Forms.GroupBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
+            this.lblTotalUsers = new System.Windows.Forms.Label();
+            this.lblTotalLoans = new System.Windows.Forms.Label();
+            this.lblCurrentLoans = new System.Windows.Forms.Label();
+            this.lblHour = new System.Windows.Forms.Label();
+            this.lblDate = new System.Windows.Forms.Label();
             this.btnProccessDone = new System.Windows.Forms.Button();
             this.btnStateOfDue = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgwBooks)).BeginInit();
@@ -399,12 +398,11 @@
             // 
             // gbxInformation
             // 
-            this.gbxInformation.Controls.Add(this.label19);
-            this.gbxInformation.Controls.Add(this.label18);
-            this.gbxInformation.Controls.Add(this.label17);
-            this.gbxInformation.Controls.Add(this.label16);
-            this.gbxInformation.Controls.Add(this.label15);
-            this.gbxInformation.Controls.Add(this.label14);
+            this.gbxInformation.Controls.Add(this.lblTotalUsers);
+            this.gbxInformation.Controls.Add(this.lblTotalLoans);
+            this.gbxInformation.Controls.Add(this.lblCurrentLoans);
+            this.gbxInformation.Controls.Add(this.lblHour);
+            this.gbxInformation.Controls.Add(this.lblDate);
             this.gbxInformation.Location = new System.Drawing.Point(861, 12);
             this.gbxInformation.Name = "gbxInformation";
             this.gbxInformation.Size = new System.Drawing.Size(187, 246);
@@ -412,59 +410,50 @@
             this.gbxInformation.TabStop = false;
             this.gbxInformation.Text = "Bilgi Kutusu";
             // 
-            // label19
+            // lblTotalUsers
             // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(6, 219);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(122, 16);
-            this.label19.TabIndex = 5;
-            this.label19.Text = "Toplam Üye Sayısı";
+            this.lblTotalUsers.AutoSize = true;
+            this.lblTotalUsers.Location = new System.Drawing.Point(6, 180);
+            this.lblTotalUsers.Name = "lblTotalUsers";
+            this.lblTotalUsers.Size = new System.Drawing.Size(122, 16);
+            this.lblTotalUsers.TabIndex = 5;
+            this.lblTotalUsers.Text = "Toplam Üye Sayısı";
             // 
-            // label18
+            // lblTotalLoans
             // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(6, 180);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(182, 16);
-            this.label18.TabIndex = 4;
-            this.label18.Text = "Bugüne Kadar Kiralanan Adet";
+            this.lblTotalLoans.AutoSize = true;
+            this.lblTotalLoans.Location = new System.Drawing.Point(6, 142);
+            this.lblTotalLoans.Name = "lblTotalLoans";
+            this.lblTotalLoans.Size = new System.Drawing.Size(182, 16);
+            this.lblTotalLoans.TabIndex = 4;
+            this.lblTotalLoans.Text = "Bugüne Kadar Kiralanan Adet";
             // 
-            // label17
+            // lblCurrentLoans
             // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(6, 140);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(144, 16);
-            this.label17.TabIndex = 3;
-            this.label17.Text = "Anlık Kiralıktaki Kitaplar";
+            this.lblCurrentLoans.AutoSize = true;
+            this.lblCurrentLoans.Location = new System.Drawing.Point(6, 106);
+            this.lblCurrentLoans.Name = "lblCurrentLoans";
+            this.lblCurrentLoans.Size = new System.Drawing.Size(144, 16);
+            this.lblCurrentLoans.TabIndex = 3;
+            this.lblCurrentLoans.Text = "Anlık Kiralıktaki Kitaplar";
             // 
-            // label16
+            // lblHour
             // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(6, 104);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(96, 16);
-            this.label16.TabIndex = 2;
-            this.label16.Text = "Güncel Fiyatlar";
+            this.lblHour.AutoSize = true;
+            this.lblHour.Location = new System.Drawing.Point(6, 70);
+            this.lblHour.Name = "lblHour";
+            this.lblHour.Size = new System.Drawing.Size(35, 16);
+            this.lblHour.TabIndex = 1;
+            this.lblHour.Text = "Saat";
             // 
-            // label15
+            // lblDate
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(6, 70);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(35, 16);
-            this.label15.TabIndex = 1;
-            this.label15.Text = "Saat";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(6, 32);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(38, 16);
-            this.label14.TabIndex = 0;
-            this.label14.Text = "Tarih";
+            this.lblDate.AutoSize = true;
+            this.lblDate.Location = new System.Drawing.Point(6, 32);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(38, 16);
+            this.lblDate.TabIndex = 0;
+            this.lblDate.Text = "Tarih";
             // 
             // btnProccessDone
             // 
@@ -559,12 +548,11 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.GroupBox gbxInformation;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label lblTotalUsers;
+        private System.Windows.Forms.Label lblTotalLoans;
+        private System.Windows.Forms.Label lblCurrentLoans;
+        private System.Windows.Forms.Label lblHour;
+        private System.Windows.Forms.Label lblDate;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox tbxAuthorName;
         private System.Windows.Forms.Button btnProccessDone;

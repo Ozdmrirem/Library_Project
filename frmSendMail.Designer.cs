@@ -31,9 +31,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbxToMail = new System.Windows.Forms.TextBox();
             this.tbxMailContent = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.tbxSubject = new System.Windows.Forms.TextBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSend = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -68,13 +68,13 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "Mail İçeriği :";
             // 
-            // textBox1
+            // tbxToMail
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.textBox1.Location = new System.Drawing.Point(170, 39);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(297, 23);
-            this.textBox1.TabIndex = 3;
+            this.tbxToMail.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.tbxToMail.Location = new System.Drawing.Point(170, 39);
+            this.tbxToMail.Name = "tbxToMail";
+            this.tbxToMail.Size = new System.Drawing.Size(297, 23);
+            this.tbxToMail.TabIndex = 3;
             // 
             // tbxMailContent
             // 
@@ -84,13 +84,13 @@
             this.tbxMailContent.Size = new System.Drawing.Size(297, 209);
             this.tbxMailContent.TabIndex = 4;
             // 
-            // textBox3
+            // tbxSubject
             // 
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.textBox3.Location = new System.Drawing.Point(170, 90);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(297, 23);
-            this.textBox3.TabIndex = 5;
+            this.tbxSubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.tbxSubject.Location = new System.Drawing.Point(170, 90);
+            this.tbxSubject.Name = "tbxSubject";
+            this.tbxSubject.Size = new System.Drawing.Size(297, 23);
+            this.tbxSubject.TabIndex = 5;
             // 
             // btnCancel
             // 
@@ -110,6 +110,7 @@
             this.btnSend.TabIndex = 7;
             this.btnSend.Text = "Gönder";
             this.btnSend.UseVisualStyleBackColor = true;
+            this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
             // 
             // frmSendMail
             // 
@@ -118,9 +119,9 @@
             this.ClientSize = new System.Drawing.Size(514, 450);
             this.Controls.Add(this.btnSend);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.tbxSubject);
             this.Controls.Add(this.tbxMailContent);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tbxToMail);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -136,9 +137,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbxToMail;
         private System.Windows.Forms.TextBox tbxMailContent;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox tbxSubject;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnSend;
     }
