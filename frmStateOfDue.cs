@@ -22,6 +22,7 @@ namespace Library_Project
         {
             BringAndSearchCompleted();
             BringAndSearchNotCompleted();
+
         }
 
         void BringAndSearchCompleted()
@@ -94,6 +95,8 @@ namespace Library_Project
             tbxDueDate.Text= dgwNotCompletedReturns.CurrentRow.Cells[7].Value.ToString();
             tbxLoanDate.Text= dgwNotCompletedReturns.CurrentRow.Cells[6].Value.ToString();
 
+            CostCalculator();
+
         }
 
         private void btnReturnProccessDone_Click(object sender, EventArgs e)
@@ -111,8 +114,8 @@ namespace Library_Project
                     using (SqlCommand cmd = new SqlCommand(doneQuery, conn))
                     {
                         cmd.Parameters.AddWithValue("@returnDate", DateTime.Now);
-                        cmd.Parameters.AddWithValue("@penaltyFee", 35);
-                        cmd.Parameters.AddWithValue("@totalCost", 50);
+                        cmd.Parameters.AddWithValue("@penaltyFee", _penaltyFee);
+                        cmd.Parameters.AddWithValue("@totalCost", _totalCost);
                         cmd.Parameters.AddWithValue("@loanId", _selectedLoanId);
 
                         cmd.ExecuteNonQuery();
@@ -120,9 +123,53 @@ namespace Library_Project
                         BringAndSearchNotCompleted();
                         MessageBox.Show("Kullanıcının iade işlemi tamamlandı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-
                 }
             }
+        }
+
+        //1 gunden once verilmemisse gun basi 1.05 TL
+        //duedate den buyukse 2.95 TL
+
+        double _totalCost;
+        double _penaltyFee;
+        double _loanCost;
+        void CostCalculator()
+        {
+            DateTime loanDate = Convert.ToDateTime(tbxLoanDate.Text);
+            DateTime dueDate = Convert.ToDateTime(tbxDueDate.Text);
+            DateTime today = DateTime.Now;
+
+            TimeSpan loanDuration = today - loanDate;
+            TimeSpan overDueDuration = today - dueDate;
+
+            if (today < dueDate)
+            {
+                if (loanDuration.Days <= 1)
+                {
+                    _loanCost = 0;
+                }
+                else
+                {
+                    _loanCost = loanDuration.Days * 1.05;
+                }
+                _penaltyFee = 0;
+            }
+            else
+            {
+                _loanCost = loanDuration.Days * 1.05;
+                _penaltyFee = overDueDuration.Days * 2.95;
+            }
+            
+            _totalCost = _loanCost + _penaltyFee;
+
+            lblPenaltyFee.Text = _penaltyFee.ToString();
+            lblTotalCost.Text = _totalCost.ToString();
+        }
+
+        private void btnSendMail_Click(object sender, EventArgs e)
+        {
+            frmSendMail sendMail = new frmSendMail();
+            sendMail.ShowDialog();
         }
     }
 }
