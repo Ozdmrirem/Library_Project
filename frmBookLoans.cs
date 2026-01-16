@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Diagnostics.Eventing.Reader;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Library_Project
@@ -25,6 +18,7 @@ namespace Library_Project
             ChangeStatusOfBookControllers();
             ChangeStatusOfMemberControllers();
             BringAndSearchMembers();
+            InformationBox();
         }
         private void BringAndSearchMembers()
         {
@@ -52,6 +46,9 @@ namespace Library_Project
 
         void InformationBox()
         {
+            timer1.Interval = 1000;
+            timer1.Start();
+
             using (SqlConnection conn = SqlCon.Connect())
             {
                 conn.Open();
@@ -66,8 +63,11 @@ namespace Library_Project
                 {
                     using (SqlDataReader drForCurrentLoans = cmdForCurrentLoans.ExecuteReader())
                     {
-                        int totalCurrentLoans = Convert.ToInt32(drForCurrentLoans["Total"]);
-                        lblCurrentLoans.Text = totalCurrentLoans.ToString();
+                        if (drForCurrentLoans.Read())
+                        {
+                            int totalCurrentLoans = Convert.ToInt32(drForCurrentLoans["Total"]);
+                            lblCurrentLoans.Text = "Güncel kiralananlar : " + totalCurrentLoans.ToString();
+                        }                          
                     }
                 }
 
@@ -75,8 +75,11 @@ namespace Library_Project
                 {
                     using (SqlDataReader drForTotalLoans = cmdForTotalLoans.ExecuteReader())
                     {
-                        int totalLoans = Convert.ToInt32(drForTotalLoans["Total"]);
-                        lblTotalLoans.Text = totalLoans.ToString(); 
+                        if (drForTotalLoans.Read())
+                        {
+                            int totalLoans = Convert.ToInt32(drForTotalLoans["Total"]);
+                            lblTotalLoans.Text = "Toplam kiralananlar " + totalLoans.ToString();
+                        }                   
                     }
                 }
 
@@ -84,8 +87,11 @@ namespace Library_Project
                 {
                     using (SqlDataReader drForTotalUsers = cmdForTotalUsers.ExecuteReader())
                     {
-                        int totalUsers = Convert.ToInt32(drForTotalUsers["Total"]);
-                        lblTotalUsers.Text = totalUsers.ToString();
+                        if (drForTotalUsers.Read())
+                        {
+                            int totalUsers = Convert.ToInt32(drForTotalUsers["Total"]);
+                            lblTotalUsers.Text = "Toplam üye : " + totalUsers.ToString();
+                        } 
                     }
                 }
             }
@@ -212,6 +218,26 @@ namespace Library_Project
         {
             frmStateOfDue frmStateOfDue = new frmStateOfDue();
             frmStateOfDue.ShowDialog();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            lblDate.Text = DateTime.Now.ToString("ddd  MMM  yyyy");
+            lblHour.Text = DateTime.Now.ToString("HH:mm");
+        }
+
+        private void btnHistory_Click(object sender, EventArgs e)
+        {
+            if(_selectedMemberId < 0)
+            {
+                MessageBox.Show("Lütfen geçerli bir kullanıcı seçiniz!","Hata",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+            else
+            {
+                frmPastTransactions pastTransactions = new frmPastTransactions(_selectedMemberId);
+                pastTransactions.ShowDialog();
+            }
+            
         }
     }
 }

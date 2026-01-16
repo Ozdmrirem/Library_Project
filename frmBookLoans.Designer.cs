@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dgwBooks = new System.Windows.Forms.DataGridView();
             this.dgwMembers = new System.Windows.Forms.DataGridView();
             this.dtpDueDate = new System.Windows.Forms.DateTimePicker();
@@ -68,6 +69,7 @@
             this.lblDate = new System.Windows.Forms.Label();
             this.btnProccessDone = new System.Windows.Forms.Button();
             this.btnStateOfDue = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgwBooks)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgwMembers)).BeginInit();
             this.gbxMembers.SuspendLayout();
@@ -156,6 +158,7 @@
             this.btnHistory.TabIndex = 46;
             this.btnHistory.Text = "Geçmiş İşlemler";
             this.btnHistory.UseVisualStyleBackColor = true;
+            this.btnHistory.Click += new System.EventHandler(this.btnHistory_Click);
             // 
             // tbxFirstName
             // 
@@ -478,6 +481,10 @@
             this.btnStateOfDue.UseVisualStyleBackColor = true;
             this.btnStateOfDue.Click += new System.EventHandler(this.btnStateOfDue_Click);
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // frmBookLoans
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -557,5 +564,6 @@
         private System.Windows.Forms.TextBox tbxAuthorName;
         private System.Windows.Forms.Button btnProccessDone;
         private System.Windows.Forms.Button btnStateOfDue;
+        private System.Windows.Forms.Timer timer1;
     }
 }
