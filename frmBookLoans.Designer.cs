@@ -70,6 +70,7 @@
             this.btnProccessDone = new System.Windows.Forms.Button();
             this.btnStateOfDue = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgwBooks)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgwMembers)).BeginInit();
             this.gbxMembers.SuspendLayout();
@@ -102,7 +103,7 @@
             // dtpDueDate
             // 
             this.dtpDueDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.dtpDueDate.Location = new System.Drawing.Point(120, 273);
+            this.dtpDueDate.Location = new System.Drawing.Point(120, 237);
             this.dtpDueDate.Name = "dtpDueDate";
             this.dtpDueDate.Size = new System.Drawing.Size(260, 27);
             this.dtpDueDate.TabIndex = 2;
@@ -237,7 +238,7 @@
             this.gbxBooks.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.gbxBooks.Location = new System.Drawing.Point(16, 12);
             this.gbxBooks.Name = "gbxBooks";
-            this.gbxBooks.Size = new System.Drawing.Size(364, 246);
+            this.gbxBooks.Size = new System.Drawing.Size(364, 219);
             this.gbxBooks.TabIndex = 50;
             this.gbxBooks.TabStop = false;
             this.gbxBooks.Text = "Kitap Bilgileri";
@@ -336,7 +337,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label5.Location = new System.Drawing.Point(16, 278);
+            this.label5.Location = new System.Drawing.Point(16, 242);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(97, 20);
             this.label5.TabIndex = 51;
@@ -485,11 +486,22 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(16, 265);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(364, 43);
+            this.button1.TabIndex = 61;
+            this.button1.Text = "ANA SAYFA";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // frmBookLoans
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1065, 696);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnStateOfDue);
             this.Controls.Add(this.btnProccessDone);
             this.Controls.Add(this.gbxInformation);
@@ -565,5 +577,6 @@
         private System.Windows.Forms.Button btnProccessDone;
         private System.Windows.Forms.Button btnStateOfDue;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button button1;
     }
 }

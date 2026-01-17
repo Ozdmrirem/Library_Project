@@ -60,6 +60,9 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.gbxUpdate = new System.Windows.Forms.GroupBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.cbxShowPassives = new System.Windows.Forms.CheckBox();
+            this.btnMain = new System.Windows.Forms.Button();
             this.gbxInsertMember.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgwMembers)).BeginInit();
             this.gbxUpdate.SuspendLayout();
@@ -269,7 +272,7 @@
             // 
             // tbxMember
             // 
-            this.tbxMember.Location = new System.Drawing.Point(235, 226);
+            this.tbxMember.Location = new System.Drawing.Point(247, 254);
             this.tbxMember.Name = "tbxMember";
             this.tbxMember.Size = new System.Drawing.Size(160, 22);
             this.tbxMember.TabIndex = 37;
@@ -279,13 +282,12 @@
             // 
             this.dgwMembers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgwMembers.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgwMembers.Location = new System.Drawing.Point(0, 280);
+            this.dgwMembers.Location = new System.Drawing.Point(0, 295);
             this.dgwMembers.Name = "dgwMembers";
             this.dgwMembers.RowHeadersWidth = 51;
             this.dgwMembers.RowTemplate.Height = 24;
-            this.dgwMembers.Size = new System.Drawing.Size(992, 230);
+            this.dgwMembers.Size = new System.Drawing.Size(992, 215);
             this.dgwMembers.TabIndex = 1;
-           
             // 
             // tbxUpdateLastName
             // 
@@ -368,7 +370,6 @@
             this.btnUpdate.TabIndex = 46;
             this.btnUpdate.Text = "Güncelle";
             this.btnUpdate.UseVisualStyleBackColor = true;
-            
             // 
             // btnDelete
             // 
@@ -387,7 +388,6 @@
             // 
             this.gbxUpdate.Controls.Add(this.label9);
             this.gbxUpdate.Controls.Add(this.btnDelete);
-            this.gbxUpdate.Controls.Add(this.tbxMember);
             this.gbxUpdate.Controls.Add(this.btnUpdate);
             this.gbxUpdate.Controls.Add(this.tbxUpdateName);
             this.gbxUpdate.Controls.Add(this.tbxUpdateRoles);
@@ -399,19 +399,56 @@
             this.gbxUpdate.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.gbxUpdate.Location = new System.Drawing.Point(12, 4);
             this.gbxUpdate.Name = "gbxUpdate";
-            this.gbxUpdate.Size = new System.Drawing.Size(413, 270);
+            this.gbxUpdate.Size = new System.Drawing.Size(413, 208);
             this.gbxUpdate.TabIndex = 48;
             this.gbxUpdate.TabStop = false;
             this.gbxUpdate.Text = "Güncelle";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label11.Location = new System.Drawing.Point(203, 255);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(38, 18);
+            this.label11.TabIndex = 48;
+            this.label11.Text = "Ara :";
+            // 
+            // cbxShowPassives
+            // 
+            this.cbxShowPassives.AutoSize = true;
+            this.cbxShowPassives.Location = new System.Drawing.Point(12, 231);
+            this.cbxShowPassives.Name = "cbxShowPassives";
+            this.cbxShowPassives.Size = new System.Drawing.Size(138, 20);
+            this.cbxShowPassives.TabIndex = 49;
+            this.cbxShowPassives.Text = "Silinenlerle Göster";
+            this.cbxShowPassives.UseVisualStyleBackColor = true;
+            this.cbxShowPassives.CheckedChanged += new System.EventHandler(this.cbxShowPassives_CheckedChanged);
+            // 
+            // btnMain
+            // 
+            this.btnMain.BackColor = System.Drawing.Color.Bisque;
+            this.btnMain.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnMain.Location = new System.Drawing.Point(247, 221);
+            this.btnMain.Name = "btnMain";
+            this.btnMain.Size = new System.Drawing.Size(160, 27);
+            this.btnMain.TabIndex = 50;
+            this.btnMain.Text = "ANA SAYFA";
+            this.btnMain.UseVisualStyleBackColor = false;
+            this.btnMain.Click += new System.EventHandler(this.btnMain_Click);
             // 
             // frmMembers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(992, 510);
+            this.Controls.Add(this.cbxShowPassives);
+            this.Controls.Add(this.btnMain);
             this.Controls.Add(this.gbxUpdate);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.dgwMembers);
             this.Controls.Add(this.gbxInsertMember);
+            this.Controls.Add(this.tbxMember);
             this.Name = "frmMembers";
             this.Text = "frmMembers";
             this.Load += new System.EventHandler(this.frmMembers_Load);
@@ -421,6 +458,7 @@
             this.gbxUpdate.ResumeLayout(false);
             this.gbxUpdate.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -458,5 +496,8 @@
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.GroupBox gbxUpdate;
+        private System.Windows.Forms.CheckBox cbxShowPassives;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button btnMain;
     }
 }

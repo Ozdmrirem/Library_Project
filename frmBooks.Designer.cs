@@ -53,6 +53,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tbxBookName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnMain = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgwBooks)).BeginInit();
             this.gbxInsertBook.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numStock)).BeginInit();
@@ -319,11 +320,22 @@
             this.label1.TabIndex = 20;
             this.label1.Text = "Kitap :";
             // 
+            // btnMain
+            // 
+            this.btnMain.Location = new System.Drawing.Point(178, 259);
+            this.btnMain.Name = "btnMain";
+            this.btnMain.Size = new System.Drawing.Size(205, 31);
+            this.btnMain.TabIndex = 12;
+            this.btnMain.Text = "ANA SAYFA";
+            this.btnMain.UseVisualStyleBackColor = true;
+            this.btnMain.Click += new System.EventHandler(this.btnMain_Click);
+            // 
             // frmBooks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(991, 529);
+            this.Controls.Add(this.btnMain);
             this.Controls.Add(this.gbxInsertBook);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnUpdate);
@@ -377,5 +389,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox tbxBookName;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnMain;
     }
 }

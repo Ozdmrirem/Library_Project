@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -208,5 +209,39 @@ namespace Library_Project
             tbxUpdateRoles.Text = dgwMembers.CurrentRow.Cells[4].Value.ToString();
 
         }
+
+        private void cbxShowPassives_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbxShowPassives.Checked)
+            {
+                    using (SqlConnection conn = SqlCon.Connect())
+                    {
+                        conn.Open();
+
+                        string query = " SELECT au.UserId,au.FirstName,au.LastName,STRING_AGG(ar.RoleName, ',') AS Roles,au.IdentityNumber,au.BirthDate,au.CreatedDate FROM AppUsers au INNER JOIN UserRoles ur ON ur.UserId = au.UserId INNER JOIN AppRoles ar ON ar.RoleId = ur.RoleId WHERE au.Status = 1 GROUP BY  au.UserId,au.FirstName,au.LastName,au.IdentityNumber,au.BirthDate,au.CreatedDate HAVING (au.FirstName + ' ' + au.LastName LIKE @memberName) OR (au.IdentityNumber LIKE @identityNumber)";
+
+                        using (SqlCommand cmd = new SqlCommand(query, conn))
+                        {
+                            cmd.Parameters.AddWithValue("@memberName", '%' + tbxMember.Text + '%');
+                            cmd.Parameters.AddWithValue("@identityNumber", '%' + tbxMember.Text + '%');
+
+
+                            SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
+                            DataSet dataSet = new DataSet();
+                            dataAdapter.Fill(dataSet);
+
+                            dgwMembers.DataSource = dataSet.Tables[0];
+
+                        }
+                    }
+                }
+            }
+
+        private void btnMain_Click(object sender, EventArgs e)
+        {
+            frmMain main = new frmMain();
+            main.Show();
+            this.Hide();
+        }
     }
-}
+    }
